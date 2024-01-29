@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import data from "../data/data.json";
 import ErrorMessage from "./ErrorMessage";
 
-import correctIcon from "../../assets/icon-correct.svg";
-import incorrectIcon from "../../assets/icon-incorrect.svg";
+import correctIcon from "/assets/icon-correct.svg";
+import incorrectIcon from "/assets/icon-incorrect.svg";
 
 function QuizQuestion() {
   const { quizTitle, questionIndex } = useParams();
@@ -95,10 +95,7 @@ function QuizQuestion() {
 
   return (
     <div>
-      <img
-        src={`/assets/${selectedQuiz.icon}`}
-        alt={`${selectedQuiz.title} icon`}
-      />
+      <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
       <h2>{selectedQuiz.title}</h2>
       <p>
         Question {parseInt(questionIndex, 10) + 1} of{" "}

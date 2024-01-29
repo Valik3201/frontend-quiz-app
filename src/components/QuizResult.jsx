@@ -14,19 +14,13 @@ function QuizResult() {
 
   return (
     <div>
-      <img
-        src={`/assets/${selectedQuiz.icon}`}
-        alt={`${selectedQuiz.title} icon`}
-      />
+      <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
       <h2>{selectedQuiz.title}</h2>
       <h2>Quiz completed</h2>
       <p>
         You scored {userScore} out of {selectedQuiz.questions.length}
       </p>
-      <img
-        src={`/assets/${selectedQuiz.icon}`}
-        alt={`${selectedQuiz.title} icon`}
-      />
+      <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
       <p>{selectedQuiz.title}</p>
       <button onClick={handlePlayAgain}>Play again</button>
     </div>
