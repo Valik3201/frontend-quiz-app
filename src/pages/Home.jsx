@@ -45,24 +45,6 @@ const QuizList = styled.ul`
   flex-direction: column;
   gap: 1.5rem;
   list-style: none;
-
-  li {
-    &:nth-child(1) img {
-      background-color: #fff1e9;
-    }
-
-    &:nth-child(2) img {
-      background-color: #e0fdef;
-    }
-
-    &:nth-child(3) img {
-      background-color: #ebf0ff;
-    }
-
-    &:nth-child(4) img {
-      background-color: #f6e7ff;
-    }
-  }
 `;
 
 const QuizButton = styled.button`
@@ -89,6 +71,20 @@ const QuizButton = styled.button`
     height: 3.5rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
+    background-color: ${(props) => {
+      switch (props.color) {
+        case 1:
+          return "#fff1e9";
+        case 2:
+          return "#e0fdef";
+        case 3:
+          return "#ebf0ff";
+        case 4:
+          return "#f6e7ff";
+        default:
+          return "#f6e7ff";
+      }
+    }};
   }
 `;
 
@@ -117,9 +113,13 @@ function Home() {
       </TitleContainer>
 
       <QuizList>
-        {data.quizzes.map(({ title, icon }) => (
+        {data.quizzes.map(({ title, icon }, index) => (
           <li key={title}>
-            <QuizButton onClick={() => startQuiz(title)}>
+            <QuizButton
+              as="button"
+              color={index + 1}
+              onClick={() => startQuiz(title)}
+            >
               <img src={icon} alt={`${title} icon`} />
               <QuizTitle>{title}</QuizTitle>
             </QuizButton>
