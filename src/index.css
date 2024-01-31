@@ -1,6 +1,22 @@
+@import "/node_modules/modern-normalize/modern-normalize.css";
+
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap");
 
-body {
+/* Reset default margins and paddings for certain elements */
+html,
+body,
+div,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+form,
+input,
+button {
+  margin: 0;
+  padding: 0;
   font-family: "Rubik", sans-serif;
 }
 

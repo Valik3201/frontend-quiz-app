@@ -1,6 +1,100 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import data from "../data/data.json";
+import { colors } from "../styles/colors";
+import { fonts } from "../styles/fonts";
+
+const Container = styled.div`
+  display: flex;
+  width: 72.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto;
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const WelcomeText = styled.span`
+  color: ${colors.darkNavy};
+  ${fonts.headingLRegular};
+`;
+
+const QuizText = styled.span`
+  color: ${colors.darkNavy};
+  ${fonts.headingLBold};
+`;
+
+const Subtitle = styled.p`
+  color: ${colors.greyNavy};
+  ${fonts.bodyS};
+`;
+
+const QuizList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+
+  li {
+    &:nth-child(1) img {
+      background-color: #fff1e9;
+    }
+
+    &:nth-child(2) img {
+      background-color: #e0fdef;
+    }
+
+    &:nth-child(3) img {
+      background-color: #ebf0ff;
+    }
+
+    &:nth-child(4) img {
+      background-color: #f6e7ff;
+    }
+  }
+`;
+
+const QuizButton = styled.button`
+  display: flex;
+  width: 35.25rem;
+  padding: calc(1.25rem - 6px);
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 1.5rem;
+  color: ${colors.darkNavy};
+  background: ${colors.pureWhite};
+  box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+  border: 3px solid transparent;
+  transition: 0.25s ease-in-out;
+
+  &:hover {
+    border: 3px solid ${colors.purple};
+  }
+
+  img {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+`;
+
+const QuizTitle = styled.p`
+  ${fonts.headingS}
+`;
 
 function Home() {
   const navigate = useNavigate();
@@ -12,20 +106,27 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>Welcome to the Frontend Quiz!</h1>
-      <p>Pick a subject to get started.</p>
-      <ul>
+    <Container>
+      <TitleContainer>
+        <Title>
+          <WelcomeText>Welcome to the </WelcomeText>
+          <QuizText>Frontend Quiz!</QuizText>
+        </Title>
+
+        <Subtitle>Pick a subject to get started.</Subtitle>
+      </TitleContainer>
+
+      <QuizList>
         {data.quizzes.map(({ title, icon }) => (
           <li key={title}>
-            <button onClick={() => startQuiz(title)}>
+            <QuizButton onClick={() => startQuiz(title)}>
               <img src={icon} alt={`${title} icon`} />
-              {title}
-            </button>
+              <QuizTitle>{title}</QuizTitle>
+            </QuizButton>
           </li>
         ))}
-      </ul>
-    </div>
+      </QuizList>
+    </Container>
   );
 }
 
