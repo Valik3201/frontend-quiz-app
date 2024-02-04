@@ -1,16 +1,25 @@
-import { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import data from "../data/data.json";
 import { colors } from "../styles/colors";
 import { fonts } from "../styles/fonts";
 
+import { GlobalContext } from "../context/globalContext";
+
+import Layout from "../components/Layout";
+import { SwitchButton } from "../styles/homeStyles";
+
 const Container = styled.div`
   display: flex;
-  width: 72.5rem;
+  align-items: flex-end;
+  flex-direction: column;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin: 0 auto;
+  width: 72.5rem;
 `;
 
 const TitleContainer = styled.div`
@@ -26,17 +35,17 @@ const Title = styled.div`
 `;
 
 const WelcomeText = styled.span`
-  color: ${colors.darkNavy};
+  color: ${(props) => props.theme.text};
   ${fonts.headingLRegular};
 `;
 
 const QuizText = styled.span`
-  color: ${colors.darkNavy};
+  color: ${(props) => props.theme.text};
   ${fonts.headingLBold};
 `;
 
 const Subtitle = styled.p`
-  color: ${colors.greyNavy};
+  color: ${(props) => props.theme.secondaryText};
   ${fonts.bodyS};
 `;
 
@@ -50,15 +59,15 @@ const QuizList = styled.ul`
 const QuizButton = styled.button`
   display: flex;
   width: 35.25rem;
-  padding: calc(1.25rem - 6px);
+  padding: calc(1.25rem - 3px);
   align-items: center;
   gap: 2rem;
   cursor: pointer;
   border: none;
   border-radius: 1.5rem;
-  color: ${colors.darkNavy};
-  background: ${colors.pureWhite};
-  box-shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
+  color: ${(props) => props.theme.text};
+  background: ${(props) => props.theme.buttonBg};
+  box-shadow: ${(props) => props.theme.shadow};
   border: 3px solid transparent;
   transition: 0.25s ease-in-out;
 
@@ -67,8 +76,8 @@ const QuizButton = styled.button`
   }
 
   img {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: ${(props) => {
@@ -101,32 +110,51 @@ function Home() {
     navigate(`/${quizTitle}/question/0`);
   };
 
+  const { theme, themeSwitchHandler } = useContext(GlobalContext);
+
+  useEffect(() => {
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <Container>
-      <TitleContainer>
-        <Title>
-          <WelcomeText>Welcome to the </WelcomeText>
-          <QuizText>Frontend Quiz!</QuizText>
-        </Title>
+    <Layout>
+      <Container>
+        <SwitchButton>
+          <input
+            type="checkbox"
+            onChange={() =>
+              themeSwitchHandler(theme === "dark" ? "light" : "dark")
+            }
+          />
+          <span></span>
+        </SwitchButton>
+        <Wrapper>
+          <TitleContainer>
+            <Title>
+              <WelcomeText>Welcome to the </WelcomeText>
+              <QuizText>Frontend Quiz!</QuizText>
+            </Title>
 
-        <Subtitle>Pick a subject to get started.</Subtitle>
-      </TitleContainer>
+            <Subtitle>Pick a subject to get started.</Subtitle>
+          </TitleContainer>
 
-      <QuizList>
-        {data.quizzes.map(({ title, icon }, index) => (
-          <li key={title}>
-            <QuizButton
-              as="button"
-              color={index + 1}
-              onClick={() => startQuiz(title)}
-            >
-              <img src={icon} alt={`${title} icon`} />
-              <QuizTitle>{title}</QuizTitle>
-            </QuizButton>
-          </li>
-        ))}
-      </QuizList>
-    </Container>
+          <QuizList>
+            {data.quizzes.map(({ title, icon }, index) => (
+              <li key={title}>
+                <QuizButton
+                  as="button"
+                  color={index + 1}
+                  onClick={() => startQuiz(title)}
+                >
+                  <img src={icon} alt={`${title} icon`} />
+                  <QuizTitle>{title}</QuizTitle>
+                </QuizButton>
+              </li>
+            ))}
+          </QuizList>
+        </Wrapper>
+      </Container>
+    </Layout>
   );
 }
 
