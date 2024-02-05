@@ -1,19 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import data from "../data/data.json";
 import { colors } from "../styles/colors";
 import { fonts } from "../styles/fonts";
 
-import { GlobalContext } from "../context/globalContext";
-
-import Layout from "../components/Layout";
 import { SwitchButton } from "../styles/homeStyles";
+import { GlobalContext } from "../context/globalContext";
 
 const Container = styled.div`
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+`;
+
+const ThemeToggleContainer = styled.div`
+  display: inline-flex;
+  gap: 1rem;
+  margin: 6% 0;
 `;
 
 const Wrapper = styled.div`
@@ -101,7 +105,7 @@ const QuizTitle = styled.p`
   ${fonts.headingS}
 `;
 
-function Home() {
+const Home = () => {
   const navigate = useNavigate();
   const [selectedQuizTitle, setSelectedQuizTitle] = useState(null);
 
@@ -112,50 +116,54 @@ function Home() {
 
   const { theme, themeSwitchHandler } = useContext(GlobalContext);
 
-  useEffect(() => {
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
+  const iconSun = theme === "dark" ? "icon-sun-light.svg" : "icon-sun-dark.svg";
+  const iconMoon =
+    theme === "dark" ? "icon-moon-light.svg" : "icon-moon-dark.svg";
 
   return (
-    <Layout>
-      <Container>
+    <Container>
+      <ThemeToggleContainer>
+        <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
         <SwitchButton>
           <input
             type="checkbox"
+            checked={theme === "dark"}
             onChange={() =>
               themeSwitchHandler(theme === "dark" ? "light" : "dark")
             }
           />
           <span></span>
         </SwitchButton>
-        <Wrapper>
-          <TitleContainer>
-            <Title>
-              <WelcomeText>Welcome to the </WelcomeText>
-              <QuizText>Frontend Quiz!</QuizText>
-            </Title>
+        <img src={`/assets/${iconMoon}`} alt="Dark Theme Icon" />
+      </ThemeToggleContainer>
 
-            <Subtitle>Pick a subject to get started.</Subtitle>
-          </TitleContainer>
+      <Wrapper>
+        <TitleContainer>
+          <Title>
+            <WelcomeText>Welcome to the </WelcomeText>
+            <QuizText>Frontend Quiz!</QuizText>
+          </Title>
 
-          <QuizList>
-            {data.quizzes.map(({ title, icon }, index) => (
-              <li key={title}>
-                <QuizButton
-                  as="button"
-                  color={index + 1}
-                  onClick={() => startQuiz(title)}
-                >
-                  <img src={icon} alt={`${title} icon`} />
-                  <QuizTitle>{title}</QuizTitle>
-                </QuizButton>
-              </li>
-            ))}
-          </QuizList>
-        </Wrapper>
-      </Container>
-    </Layout>
+          <Subtitle>Pick a subject to get started.</Subtitle>
+        </TitleContainer>
+
+        <QuizList>
+          {data.quizzes.map(({ title, icon }, index) => (
+            <li key={title}>
+              <QuizButton
+                as="button"
+                color={index + 1}
+                onClick={() => startQuiz(title)}
+              >
+                <img src={icon} alt={`${title} icon`} />
+                <QuizTitle>{title}</QuizTitle>
+              </QuizButton>
+            </li>
+          ))}
+        </QuizList>
+      </Wrapper>
+    </Container>
   );
-}
+};
 
 export default Home;

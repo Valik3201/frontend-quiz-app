@@ -8,8 +8,6 @@ export const SwitchButton = styled.label`
   width: 3rem;
   height: 1.75rem;
 
-  margin: 6% 0;
-
   input {
     opacity: 0;
     width: 0;

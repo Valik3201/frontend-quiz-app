@@ -40,13 +40,14 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: ${(props) => props.theme.background};
+        overflow: hidden;
     }
 `;
 
 const LayoutContainer = styled.main`
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100svh;
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
