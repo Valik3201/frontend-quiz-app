@@ -1,122 +1,41 @@
-import React, { useContext } from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { normalize } from "styled-normalize";
+import React, { useState, useEffect } from "react";
 
-import { GlobalContext } from "../context/globalContext";
+const ThemeSwitcher = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
-import styled from "styled-components";
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(isDarkMode);
+  }, []);
 
-import { breakpointUp } from "../styles/mixins";
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
 
-import { colors } from "../styles/colors";
-
-const GlobalStyle = createGlobalStyle`
-    ${normalize}
-
-    * {
-        text-decoration: none;
-    }
-
-    html {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    body,
-    div,
-    h1,
-    h2,
-    h3,
-    p,
-    ul,
-    li,
-    form,
-    input,
-    button {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: "Rubik", sans-serif;
-        background: ${(props) => props.theme.background};
-        overflow: hidden;
-    }
-`;
-
-const LayoutContainer = styled.main`
-  display: flex;
-  justify-content: center;
-  min-height: 100svh;
-  background-position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  background-image: ${(props) => `url(${props.theme.backgroundImageMobile})`};
-
-  ${(props) =>
-    breakpointUp(
-      "tablet",
-      `
-    background-image: url(${props.theme.backgroundImageTablet});
-    `
-    )};
-
-  ${(props) =>
-    breakpointUp(
-      "desktop",
-      `
-    background-image: url(${props.theme.backgroundImageDesktop});
-    `
-    )};
-`;
-
-const Layout = ({ children }) => {
-  const darkTheme = {
-    name: "dark",
-    background: colors.darkNavy,
-    text: colors.pureWhite,
-    secondaryText: colors.lightBluish,
-    buttonBg: colors.navy,
-    shadow: "0 16px 40px 0 rgba(49, 62, 81, 0.14)",
-    backgroundImageMobile: "/assets/pattern-background-mobile-dark.svg",
-    backgroundImageTablet: "/assets/pattern-background-tablet-dark.svg",
-    backgroundImageDesktop: "/assets/pattern-background-desktop-dark.svg",
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
   };
 
-  const lightTheme = {
-    name: "light",
-    background: colors.lightGrey,
-    text: colors.darkNavy,
-    secondaryText: colors.greyNavy,
-    buttonBg: colors.pureWhite,
-    shadow: "0px 16px 40px 0px rgba(143, 160, 193, 0.14);",
-    backgroundImageMobile: "/assets/pattern-background-mobile-light.svg",
-    backgroundImageTablet: "/assets/pattern-background-tablet-light.svg",
-    backgroundImageDesktop: "/assets/pattern-background-desktop-light.svg",
-  };
-
-  const currentTheme = useContext(GlobalContext);
-
-  let theme;
-
-  switch (currentTheme.theme) {
-    case "dark":
-      theme = darkTheme;
-      break;
-    case "light":
-      theme = lightTheme;
-      break;
-    default:
-      theme = lightTheme;
-  }
+  const iconSun = darkMode ? "icon-sun-light.svg" : "icon-sun-dark.svg";
+  const iconMoon = darkMode ? "icon-moon-light.svg" : "icon-moon-dark.svg";
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <LayoutContainer>{children}</LayoutContainer>
-    </ThemeProvider>
+    <div className="inline-flex gap-4 mt-12">
+      <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
+      <button
+        onClick={toggleDarkMode}
+        className={`px-4 py-2 rounded-full ${
+          darkMode ? "dark:bg-yellow-400" : "bg-gray-800"
+        } ${
+          darkMode ? "dark:text-gray-900" : "text-white"
+        } transition-colors duration-200`}
+      >
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+      <img src={`/assets/${iconMoon}`} alt="Dark Theme Icon" />
+    </div>
   );
 };
 
-export default Layout;
+export default ThemeSwitcher;
