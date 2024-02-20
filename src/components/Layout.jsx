@@ -35,10 +35,10 @@ const GlobalStyle = createGlobalStyle`
     button {
         margin: 0;
         padding: 0;
-        font-family: "Rubik", sans-serif;
     }
 
     body {
+        font-family: "Rubik", sans-serif;
         background: ${(props) => props.theme.background};
         overflow: hidden;
     }
