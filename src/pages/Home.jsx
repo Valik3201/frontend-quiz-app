@@ -1,109 +1,7 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 import data from "../data/data.json";
-import { colors } from "../styles/colors";
-import { fonts } from "../styles/fonts";
-
-import { SwitchButton } from "../styles/homeStyles";
-import { GlobalContext } from "../context/globalContext";
-
-const Container = styled.div`
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-`;
-
-const ThemeToggleContainer = styled.div`
-  display: inline-flex;
-  gap: 1rem;
-  margin: 6% 0;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 72.5rem;
-`;
-
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-`;
-
-const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const WelcomeText = styled.span`
-  color: ${(props) => props.theme.text};
-  ${fonts.headingLRegular};
-`;
-
-const QuizText = styled.span`
-  color: ${(props) => props.theme.text};
-  ${fonts.headingLBold};
-`;
-
-const Subtitle = styled.p`
-  color: ${(props) => props.theme.secondaryText};
-  ${fonts.bodyS};
-`;
-
-const QuizList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  list-style: none;
-`;
-
-const QuizButton = styled.button`
-  display: flex;
-  width: 35.25rem;
-  padding: calc(1.25rem - 3px);
-  align-items: center;
-  gap: 2rem;
-  cursor: pointer;
-  border: none;
-  border-radius: 1.5rem;
-  color: ${(props) => props.theme.text};
-  background: ${(props) => props.theme.buttonBg};
-  box-shadow: ${(props) => props.theme.shadow};
-  border: 3px solid transparent;
-  transition: 0.25s ease-in-out;
-
-  &:hover {
-    border: 3px solid ${colors.purple};
-  }
-
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: ${(props) => {
-      switch (props.color) {
-        case 1:
-          return "#fff1e9";
-        case 2:
-          return "#e0fdef";
-        case 3:
-          return "#ebf0ff";
-        case 4:
-          return "#f6e7ff";
-        default:
-          return "#f6e7ff";
-      }
-    }};
-  }
-`;
-
-const QuizTitle = styled.p`
-  ${fonts.headingS}
-`;
 
 const Home = () => {
   const navigate = useNavigate();
@@ -114,55 +12,60 @@ const Home = () => {
     navigate(`/${quizTitle}/question/0`);
   };
 
-  const { theme, themeSwitchHandler } = useContext(GlobalContext);
-
-  const iconSun = theme === "dark" ? "icon-sun-light.svg" : "icon-sun-dark.svg";
-  const iconMoon =
-    theme === "dark" ? "icon-moon-light.svg" : "icon-moon-dark.svg";
+  function getClassname(index) {
+    switch (index % 4) {
+      case 0:
+        return "bg-[#fff1e9]";
+      case 1:
+        return "bg-[#e0fdef]";
+      case 2:
+        return "bg-[#ebf0ff]";
+      case 3:
+        return "bg-[#f6e7ff]";
+      default:
+        return "bg-[#f6e7ff]";
+    }
+  }
 
   return (
-    <Container>
-      <ThemeToggleContainer>
-        <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
-        <SwitchButton>
-          <input
-            type="checkbox"
-            checked={theme === "dark"}
-            onChange={() =>
-              themeSwitchHandler(theme === "dark" ? "light" : "dark")
-            }
-          />
-          <span></span>
-        </SwitchButton>
-        <img src={`/assets/${iconMoon}`} alt="Dark Theme Icon" />
-      </ThemeToggleContainer>
+    <div className="bg-light-grey dark:bg-dark-navy bg-cover bg-no-repeat bg-mobile-light md:bg-tablet-light lg:bg-desktop-light dark:bg-mobile-dark dark:md:bg-tablet-dark dark:lg:bg-desktop-dark text-dark-navy dark:text-pure-white">
+      <div className="flex justify-center min-h-screen">
+        <div className="flex flex-col items-end">
+          <ThemeSwitcher />
 
-      <Wrapper>
-        <TitleContainer>
-          <Title>
-            <WelcomeText>Welcome to the </WelcomeText>
-            <QuizText>Frontend Quiz!</QuizText>
-          </Title>
-
-          <Subtitle>Pick a subject to get started.</Subtitle>
-        </TitleContainer>
-
-        <QuizList>
-          {data.quizzes.map(({ title, icon }, index) => (
-            <li key={title}>
-              <QuizButton
-                as="button"
-                color={index + 1}
-                onClick={() => startQuiz(title)}
-              >
-                <img src={icon} alt={`${title} icon`} />
-                <QuizTitle>{title}</QuizTitle>
-              </QuizButton>
-            </li>
-          ))}
-        </QuizList>
-      </Wrapper>
-    </Container>
+          <div className="flex justify-between w-[1160px] mt-[6%]">
+            <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-2 select-all">
+                <span className="text-4xl font-light">Welcome to the</span>
+                <span className="text-4xl font-medium">Frontend Quiz!</span>
+              </div>
+              <p className="text-base italic text-grey-navy select-all">
+                Pick a subject to get started.
+              </p>
+            </div>
+            <ul className="flex flex-col gap-6">
+              {data.quizzes.map(({ title, icon }, index) => (
+                <li key={title}>
+                  <button
+                    className="flex items-center w-[564px] py-4 px-5 gap-8 cursor-pointer bg-pure-white dark:bg-navy border-[3px] border-pure-white dark:border-navy rounded-3xl transition duration-300 ease-in-out transform hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark"
+                    onClick={() => startQuiz(title)}
+                  >
+                    <img
+                      src={icon}
+                      alt={`${title} icon`}
+                      className={`w-15 h-15 p-2 rounded-lg ${getClassname(
+                        index
+                      )}`}
+                    />
+                    <span className="text-xl font-medium">{title}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
