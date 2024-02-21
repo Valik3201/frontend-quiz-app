@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ThemeSwitcher from "../components/Layout";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 import data from "../data/data.json";
 
 const Home = () => {

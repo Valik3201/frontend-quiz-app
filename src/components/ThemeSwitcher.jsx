@@ -23,16 +23,16 @@ const ThemeSwitcher = () => {
   return (
     <div className="inline-flex gap-4 mt-12">
       <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
-      <button
-        onClick={toggleDarkMode}
-        className={`px-4 py-2 rounded-full ${
-          darkMode ? "dark:bg-yellow-400" : "bg-gray-800"
-        } ${
-          darkMode ? "dark:text-gray-900" : "text-white"
-        } transition-colors duration-200`}
-      >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
+      <label className="relative inline-block w-12 h-7 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={darkMode}
+          onChange={toggleDarkMode}
+          className="sr-only peer"
+        />
+        <span className="absolute inset-0 bg-purple rounded-[34px]"></span>
+        <span className="absolute block w-5 h-5 bg-pure-white rounded-full left-1 bottom-1 transition duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+      </label>
       <img src={`/assets/${iconMoon}`} alt="Dark Theme Icon" />
     </div>
   );
