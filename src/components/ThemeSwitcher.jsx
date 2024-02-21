@@ -21,7 +21,7 @@ const ThemeSwitcher = () => {
   const iconMoon = darkMode ? "icon-moon-light.svg" : "icon-moon-dark.svg";
 
   return (
-    <div className="inline-flex gap-4 mt-12">
+    <div className="inline-flex gap-4 mt-[6%]">
       <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
       <label className="relative inline-block w-12 h-7 cursor-pointer">
         <input

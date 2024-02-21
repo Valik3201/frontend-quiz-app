@@ -83,6 +83,10 @@ export default {
         "tablet-light": "url('/assets/pattern-background-tablet-light.svg')",
         "desktop-light": "url('/assets/pattern-background-desktop-light.svg')",
       },
+      boxShadow: {
+        dark: "0 16px 40px 0 rgba(49, 62, 81, 0.14)",
+        light: "0 16px 40px 0 rgba(143, 160, 193, 0.14);",
+      },
       spacing: {
         128: "32rem",
         144: "36rem",
