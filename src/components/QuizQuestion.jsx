@@ -42,9 +42,11 @@ function QuizQuestion() {
     setErrorVisible(false);
 
     const radioInputs = document.querySelectorAll('input[type="radio"]');
-    radioInputs.forEach((input) => {
-      input.disabled = true;
-    });
+    if (selectedAnswer !== null) {
+      radioInputs.forEach((input) => {
+        input.disabled = true;
+      });
+    }
 
     if (selectedAnswer !== null) {
       const selectedOption = shuffledOptions[selectedAnswer];
