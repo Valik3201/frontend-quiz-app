@@ -37,10 +37,11 @@ const Home = () => {
             Frontend Quiz!
           </span>
         </div>
-        <p className="text-base italic text-grey-navy select-all">
+        <p className="text-base italic text-grey-navy dark:text-light-bluish select-all">
           Pick a subject to get started.
         </p>
       </div>
+
       <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
         {data.quizzes.map(({ title, icon }, index) => (
           <li

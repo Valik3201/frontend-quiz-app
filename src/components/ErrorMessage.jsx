@@ -1,5 +1,10 @@
 const ErrorMessage = ({ message }) => {
-  return <div style={{ color: "red", marginTop: "10px" }}>{message}</div>;
+  return (
+    <div className="flex justify-center items-center gap-2 text-red text-lg font-normal mt-4 md:mt-6">
+      <img src="/assets/icon-error.svg" alt="Error Icon" />
+      <p> {message}</p>
+    </div>
+  );
 };
 
 export default ErrorMessage;
