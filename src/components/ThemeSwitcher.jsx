@@ -21,9 +21,13 @@ const ThemeSwitcher = () => {
   const iconMoon = darkMode ? "icon-moon-light.svg" : "icon-moon-dark.svg";
 
   return (
-    <div className="inline-flex gap-4 mt-[6%]">
-      <img src={`/assets/${iconSun}`} alt="Light Theme Icon" />
-      <label className="relative inline-block w-12 h-7 cursor-pointer">
+    <div className="inline-flex items-center gap-2 md:gap-4 mt-[6%]">
+      <img
+        src={`/assets/${iconSun}`}
+        alt="Light Theme Icon"
+        className="w-4 h-4 md:w-6 md:h-6"
+      />
+      <label className="relative inline-block w-8 h-5 md:w-12 md:h-7 cursor-pointer">
         <input
           type="checkbox"
           checked={darkMode}
@@ -31,9 +35,13 @@ const ThemeSwitcher = () => {
           className="sr-only peer"
         />
         <span className="absolute inset-0 bg-purple rounded-[34px]"></span>
-        <span className="absolute block w-5 h-5 bg-pure-white rounded-full left-1 bottom-1 transition duration-300 ease-in-out transform peer-checked:translate-x-5"></span>
+        <span className="absolute block w-3 h-3 md:w-5 md:h-5 bg-pure-white rounded-full left-1 bottom-1 transition duration-300 ease-in-out transform peer-checked:translate-x-3 md:peer-checked:translate-x-5"></span>
       </label>
-      <img src={`/assets/${iconMoon}`} alt="Dark Theme Icon" />
+      <img
+        src={`/assets/${iconMoon}`}
+        alt="Dark Theme Icon"
+        className="w-4 h-4 md:w-6 md:h-6"
+      />
     </div>
   );
 };

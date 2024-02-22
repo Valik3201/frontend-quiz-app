@@ -30,38 +30,49 @@ const Home = () => {
   return (
     <div className="bg-light-grey dark:bg-dark-navy bg-cover bg-no-repeat bg-mobile-light md:bg-tablet-light lg:bg-desktop-light dark:bg-mobile-dark dark:md:bg-tablet-dark dark:lg:bg-desktop-dark text-dark-navy dark:text-pure-white">
       <div className="flex justify-center min-h-screen">
-        <div className="flex flex-col items-end">
-          <ThemeSwitcher />
+        <div className="container mx-auto">
+          <div className="flex flex-col items-end">
+            <ThemeSwitcher />
 
-          <div className="flex justify-between w-[1160px] mt-[6%]">
-            <div className="flex flex-col gap-12">
-              <div className="flex flex-col gap-2 select-all">
-                <span className="text-4xl font-light">Welcome to the</span>
-                <span className="text-4xl font-medium">Frontend Quiz!</span>
+            <div className="flex justify-between w-full flex-wrap mt-[6%]">
+              <div className="flex flex-col gap-12">
+                <div className="flex flex-col gap-2 select-all">
+                  <span className="text-3xl md:text-4xl font-extralight">
+                    Welcome to the
+                  </span>
+                  <span className="text-3xl md:text-4xl font-medium">
+                    Frontend Quiz!
+                  </span>
+                </div>
+                <p className="text-base italic text-grey-navy select-all">
+                  Pick a subject to get started.
+                </p>
               </div>
-              <p className="text-base italic text-grey-navy select-all">
-                Pick a subject to get started.
-              </p>
-            </div>
-            <ul className="flex flex-col gap-6">
-              {data.quizzes.map(({ title, icon }, index) => (
-                <li key={title}>
-                  <button
-                    className="flex items-center w-[564px] py-4 px-5 gap-8 cursor-pointer bg-pure-white dark:bg-navy border-[3px] border-pure-white dark:border-navy rounded-3xl transition duration-300 ease-in-out transform hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark"
-                    onClick={() => startQuiz(title)}
+              <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
+                {data.quizzes.map(({ title, icon }, index) => (
+                  <li
+                    key={title}
+                    className="bg-pure-white dark:bg-navy border-[3px] border-pure-white dark:border-navy rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark"
                   >
-                    <img
-                      src={icon}
-                      alt={`${title} icon`}
-                      className={`w-15 h-15 p-2 rounded-lg ${getClassname(
-                        index
-                      )}`}
-                    />
-                    <span className="text-xl font-medium">{title}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <button
+                      className="flex items-center p-3 lg:p-4 gap-4 md:gap-8 cursor-pointer "
+                      onClick={() => startQuiz(title)}
+                    >
+                      <img
+                        src={icon}
+                        alt={`${title} icon`}
+                        className={`w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${getClassname(
+                          index
+                        )}`}
+                      />
+                      <span className="text-[1.12rem] md:text-xl font-medium">
+                        {title}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
