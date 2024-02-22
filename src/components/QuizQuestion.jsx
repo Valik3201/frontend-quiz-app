@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import data from "../data/data.json";
 import ErrorMessage from "./ErrorMessage";
-
-import correctIcon from "/assets/icon-correct.svg";
-import incorrectIcon from "/assets/icon-incorrect.svg";
 
 function QuizQuestion() {
   const { quizTitle, questionIndex } = useParams();
@@ -25,7 +22,9 @@ function QuizQuestion() {
     setShuffledOptions(shuffled);
   }, [currentQuestion]);
 
-  const handleOptionClick = (optionIndex) => {
+  const handleOptionChange = (e) => {
+    const optionIndex = parseInt(e.target.id, 10);
+
     if (!isAnswerSubmitted) {
       setSelectedAnswer(optionIndex);
     }
@@ -41,6 +40,11 @@ function QuizQuestion() {
   const handleSubmit = () => {
     setSelectedAnswer(null);
     setErrorVisible(false);
+
+    const radioInputs = document.querySelectorAll('input[type="radio"]');
+    radioInputs.forEach((input) => {
+      input.disabled = true;
+    });
 
     if (selectedAnswer !== null) {
       const selectedOption = shuffledOptions[selectedAnswer];
@@ -75,6 +79,12 @@ function QuizQuestion() {
 
   const handleNextQuestion = () => {
     const nextQuestionIndex = parseInt(questionIndex, 10) + 1;
+
+    const radioInputs = document.querySelectorAll('input[type="radio"]');
+    radioInputs.forEach((input) => {
+      input.checked = false;
+      input.disabled = false;
+    });
 
     shuffledOptions.forEach((option, index) => {
       const optionElement = document.querySelector(
@@ -121,15 +131,30 @@ function QuizQuestion() {
       <div className="text-base font-medium">
         <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
           {shuffledOptions.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => handleOptionClick(index)}
-              className="group inline-flex items-center p-3 lg:p-4 gap-4 md:gap-8 w-full cursor-pointer bg-pure-white dark:bg-navy border-pure-white dark:border-navy rounded-xl md:rounded-3xl shadow-light dark:shadow-dark"
-            >
-              <div className="transition duration-300 ease-in-out group-hover:bg-[#f6e7ff] group-hover:text-purple flex items-center justify-center bg-light-grey text-grey-navy w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg">
-                {String.fromCharCode(97 + index).toUpperCase()}
-              </div>
-              <div>{option}</div>
+            <li key={index}>
+              <input
+                type="radio"
+                id={index}
+                name="option"
+                className="hidden peer"
+                onChange={handleOptionChange}
+              />
+              <label
+                htmlFor={index}
+                className="group inline-flex items-center gap-4 md:gap-8 w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple peer-checked:border-purple shadow-light dark:shadow-dark"
+              >
+                <div
+                  className={`transition duration-300 ease-in-out flex items-center justify-center bg-light-grey text-grey-navy w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
+                    selectedAnswer === index
+                      ? "bg-purple text-pure-white"
+                      : "group-hover:bg-[#f6e7ff] group-hover:text-purple"
+                  }`}
+                >
+                  {String.fromCharCode(97 + index).toUpperCase()}
+                </div>
+
+                <div>{option}</div>
+              </label>
             </li>
           ))}
         </ul>
