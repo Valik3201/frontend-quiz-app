@@ -131,8 +131,8 @@ function QuizQuestion() {
         </div>
       </div>
 
-      <div className="text-base font-medium">
-        <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
+      <div className="text-base font-medium w-full lg:w-[564px]">
+        <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6">
           {shuffledOptions.map((option, index) => (
             <li key={index} className="group">
               <input
