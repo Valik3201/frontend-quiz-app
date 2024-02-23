@@ -3,11 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.correct {
-  color: green;
-}
-
-.incorrect {
-  color: red;
-}

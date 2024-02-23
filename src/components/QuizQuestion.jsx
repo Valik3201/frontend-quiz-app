@@ -38,7 +38,6 @@ function QuizQuestion() {
   };
 
   const handleSubmit = () => {
-    setSelectedAnswer(null);
     setErrorVisible(false);
 
     const radioInputs = document.querySelectorAll('input[type="radio"]');
@@ -80,6 +79,8 @@ function QuizQuestion() {
   };
 
   const handleNextQuestion = () => {
+    setSelectedAnswer(null);
+
     const nextQuestionIndex = parseInt(questionIndex, 10) + 1;
 
     const radioInputs = document.querySelectorAll('input[type="radio"]');
@@ -133,7 +134,7 @@ function QuizQuestion() {
       <div className="text-base font-medium">
         <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
           {shuffledOptions.map((option, index) => (
-            <li key={index}>
+            <li key={index} className="group">
               <input
                 type="radio"
                 id={index}
@@ -143,19 +144,38 @@ function QuizQuestion() {
               />
               <label
                 htmlFor={index}
-                className="group inline-flex items-center gap-4 md:gap-8 w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple peer-checked:border-purple shadow-light dark:shadow-dark"
+                className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple shadow-light dark:shadow-dark ${
+                  selectedAnswer === index && isAnswerSubmitted
+                    ? "group-[.correct]:border-green group-[.incorrect]:border-red"
+                    : "peer-checked:border-purple"
+                }`}
               >
-                <div
-                  className={`transition duration-300 ease-in-out flex items-center justify-center bg-light-grey text-grey-navy w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
-                    selectedAnswer === index
-                      ? "bg-purple text-pure-white"
-                      : "group-hover:bg-[#f6e7ff] group-hover:text-purple"
-                  }`}
-                >
-                  {String.fromCharCode(97 + index).toUpperCase()}
+                <div className="inline-flex items-center gap-4 md:gap-8">
+                  <div
+                    className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 max-h-10 md:min-w-12 md:max-h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
+                      selectedAnswer === index
+                        ? isAnswerSubmitted
+                          ? "group-[.correct]:bg-green group-[.correct]:text-pure-white group-[.incorrect]:bg-red group-[.incorrect]:text-pure-white"
+                          : "bg-purple text-pure-white"
+                        : "bg-light-grey text-grey-navy group-hover:bg-[#f6e7ff] group-hover:text-purple"
+                    }`}
+                  >
+                    {String.fromCharCode(97 + index).toUpperCase()}
+                  </div>
+
+                  <div>{option}</div>
                 </div>
 
-                <div>{option}</div>
+                <img
+                  src="/assets/icon-correct.svg"
+                  alt="Correct Icon"
+                  className="hidden group-[.correct]:block"
+                />
+                <img
+                  src="/assets/icon-incorrect.svg"
+                  alt="Incorrect Icon"
+                  className="hidden group-[.incorrect]:block"
+                />
               </label>
             </li>
           ))}
