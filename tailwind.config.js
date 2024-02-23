@@ -6,8 +6,17 @@ export default {
     screens: {
       sm: "480px",
       md: "768px",
-      lg: "976px",
+      lg: "1200px",
       xl: "1440px",
+    },
+    container: {
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "1.5rem",
+        md: "4rem",
+        lg: "1.25rem",
+        xl: "8rem",
+      },
     },
     colors: {
       "dark-navy": "#313E51",
@@ -28,49 +37,43 @@ export default {
         "9xl": [
           "9rem",
           {
-            fontWeight: "500",
             lineHeight: "100%",
           },
         ],
         "4xl": [
           "4rem",
           {
-            fontWeight: "500",
             lineHeight: "100%",
           },
         ],
-        "4xl-light": [
-          "4rem",
+
+        "3xl": [
+          "2.5rem",
           {
-            fontWeight: "300",
             lineHeight: "100%",
           },
         ],
         "2xl": [
           "2.25rem",
           {
-            fontWeight: "500",
             lineHeight: "120%",
           },
         ],
         xl: [
           "1.75rem",
           {
-            fontWeight: "500",
             lineHeight: "100%",
           },
         ],
         lg: [
           "1.5rem",
           {
-            fontWeight: "400",
             lineHeight: "150%",
           },
         ],
         base: [
           "1.25rem",
           {
-            fontWeight: "400",
             lineHeight: "150%",
           },
         ],
