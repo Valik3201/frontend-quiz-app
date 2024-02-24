@@ -13,17 +13,45 @@ function QuizResult() {
   };
 
   return (
-    <div>
-      <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
-      <h2>{selectedQuiz.title}</h2>
-      <h2>Quiz completed</h2>
-      <p>
-        You scored {userScore} out of {selectedQuiz.questions.length}
-      </p>
-      <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
-      <p>{selectedQuiz.title}</p>
-      <button onClick={handlePlayAgain}>Play again</button>
-    </div>
+    <>
+      <div>
+        <div className="flex items-center gap-4 md:gap-6 text-xl font-medium">
+          <img
+            src={selectedQuiz.icon}
+            alt={`${selectedQuiz.title} icon`}
+            className="w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg bg-pure-white"
+          />
+          <h2>{selectedQuiz.title}</h2>
+        </div>
+        <div className="flex flex-col gap-2 select-all">
+          <h2 className="text-3xl md:text-4xl font-extralight">
+            Quiz completed
+          </h2>
+          <p className="text-3xl md:text-4xl font-medium">You scored...</p>
+        </div>
+      </div>
+
+      <div className="w-full lg:w-[564px] mt-10 md:mt-16 lg:mt-0">
+        <div className="flex flex-col items-center gap-3 md:gap-8 p-8 md:p-12 w-full lg:w-[564px] bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl border-[3px] border-pure-white dark:border-navy shadow-light dark:shadow-dark ">
+          <div className="flex items-center gap-4 md:gap-6 text-xl font-medium">
+            <img src={selectedQuiz.icon} alt={`${selectedQuiz.title} icon`} />
+            <p>{selectedQuiz.title}</p>
+          </div>
+          <div className="flex flex-col justify-center items-start gap-4">
+            <p className="text-9xl font-medium">{userScore}</p>
+            <p className="text-lg text-grey-navy dark:text-light-bluish">
+              out of {selectedQuiz.questions.length}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={handlePlayAgain}
+          className="text-center text-[1.12rem] md:text-xl font-medium p-3 md:p-8 mt-4 md:mt-6 w-full cursor-pointer bg-purple text-pure-white rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform shadow-light dark:shadow-dark hover:opacity-75"
+        >
+          Play again
+        </button>
+      </div>
+    </>
   );
 }
 
