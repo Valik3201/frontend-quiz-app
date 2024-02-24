@@ -144,7 +144,7 @@ function QuizQuestion() {
               />
               <label
                 htmlFor={index}
-                className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple shadow-light dark:shadow-dark ${
+                className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark ${
                   selectedAnswer === index && isAnswerSubmitted
                     ? "group-[.correct]:border-green group-[.incorrect]:border-red"
                     : "peer-checked:border-purple"
