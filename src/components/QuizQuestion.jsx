@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import Button from "./Button";
+import ProgressBar from "./ProgressBar";
 import ErrorMessage from "./ErrorMessage";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
@@ -110,6 +112,9 @@ function QuizQuestion() {
     }
   };
 
+  const progress =
+    ((parseInt(questionIndex, 10) + 1) / selectedQuiz.questions.length) * 100;
+
   return (
     <>
       <div className="flex justify-between items-center py-4 md:py-5 lg:py-10">
@@ -117,19 +122,24 @@ function QuizQuestion() {
         <ThemeSwitcher />
       </div>
 
-      <div className="flex justify-between w-full flex-wrap">
-        <div className="flex flex-col gap-7">
-          <p className="text-[0.88rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
-            Question {parseInt(questionIndex, 10) + 1} of{" "}
-            {selectedQuiz.questions.length}
-          </p>
-          <p className="text-base md:text-2xl font-medium max-w-[35rem]">
-            {currentQuestion.question}
-          </p>
+      <div className="flex justify-between flex-wrap">
+        <div className="flex w-full lg:w-auto flex-col justify-between max-h-[416px]">
+          <div className="flex flex-col gap-7 mb-6 md:mb-10 lg:mb-0">
+            <p className="text-[0.88rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
+              Question {parseInt(questionIndex, 10) + 1} of{" "}
+              {selectedQuiz.questions.length}
+            </p>
+
+            <p className="text-base md:text-2xl font-medium max-w-[35rem]">
+              {currentQuestion.question}
+            </p>
+          </div>
+
+          <ProgressBar progress={progress} />
         </div>
 
-        <div className="text-[1rem] md:text-base font-medium w-full lg:w-[564px]">
-          <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6">
+        <div className="w-full lg:w-[564px]">
+          <ul className="flex flex-col gap-3 lg:gap-6 mt-10 md:mt-16 lg:mt-0 text-[1rem] md:text-base font-medium ">
             {shuffledOptions.map((option, index) => (
               <li key={index} className="group">
                 <input
@@ -141,7 +151,7 @@ function QuizQuestion() {
                 />
                 <label
                   htmlFor={index}
-                  className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-2 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark ${
+                  className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl lg:rounded-3xl p-2 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out shadow-light dark:shadow-dark ${
                     selectedAnswer === index && isAnswerSubmitted
                       ? "group-[.correct]:border-green group-[.incorrect]:border-red"
                       : "peer-checked:border-purple"
@@ -149,7 +159,7 @@ function QuizQuestion() {
                 >
                   <div className="inline-flex items-center gap-4 md:gap-8">
                     <div
-                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
+                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md lg:rounded-lg ${
                         selectedAnswer === index
                           ? isAnswerSubmitted
                             ? "group-[.correct]:bg-green group-[.correct]:text-pure-white group-[.incorrect]:bg-red group-[.incorrect]:text-pure-white"
@@ -177,12 +187,12 @@ function QuizQuestion() {
               </li>
             ))}
           </ul>
-          <button
+
+          <Button
             onClick={isAnswerSubmitted ? handleNextQuestion : handleSubmit}
-            className="text-center p-4 lg:p-6 mt-4 md:mt-6 w-full cursor-pointer bg-purple text-pure-white rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform shadow-light dark:shadow-dark hover:opacity-75"
           >
             {isAnswerSubmitted ? "Next question" : "Submit answer"}
-          </button>
+          </Button>
           {errorVisible && <ErrorMessage message={errorMessage} />}
         </div>
       </div>
