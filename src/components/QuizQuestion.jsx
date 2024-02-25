@@ -165,7 +165,7 @@ function QuizQuestion() {
                 >
                   <div className="inline-flex items-center gap-4 md:gap-8">
                     <div
-                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:min-w-12 md:min-h-12 p-1.5 md:p-2 rounded-md lg:rounded-lg ${
+                      className={`transition duration-300 ease-in-out flex items-center justify-center min-w-10 min-h-10 md:min-w-12 md:min-h-12 p-1.5 md:p-2 rounded-md lg:rounded-lg ${
                         selectedAnswer === index
                           ? isAnswerSubmitted
                             ? "group-[.correct]:bg-green group-[.correct]:text-pure-white group-[.incorrect]:bg-red group-[.incorrect]:text-pure-white"
