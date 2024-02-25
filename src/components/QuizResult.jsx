@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 
+import Button from "./Button";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
 
@@ -42,12 +43,7 @@ function QuizResult() {
               </p>
             </div>
           </div>
-          <button
-            onClick={handlePlayAgain}
-            className="text-center text-[1.12rem] md:text-xl font-medium p-3 md:p-8 mt-4 md:mt-6 w-full cursor-pointer bg-purple text-pure-white rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform shadow-light dark:shadow-dark hover:opacity-75"
-          >
-            Play again
-          </button>
+          <Button onClick={handlePlayAgain}>Play again</Button>
         </div>
       </div>
     </>
