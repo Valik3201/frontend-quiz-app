@@ -16,7 +16,7 @@ function QuizResult() {
 
   return (
     <>
-      <div className="flex justify-between items-center mt-12">
+      <div className="flex justify-between items-center py-4 md:py-5 lg:py-10">
         <div className="flex items-center gap-4 md:gap-6 text-xl font-medium">
           <img
             src={selectedQuiz.icon}
@@ -25,11 +25,12 @@ function QuizResult() {
               selectedQuiz.title
             )}`}
           />
-          <h2>{selectedQuiz.title}</h2>
+          <h2 className="text-[1.12rem] md:text-xl">{selectedQuiz.title}</h2>
         </div>
         <ThemeSwitcher />
       </div>
-      <div className="flex justify-between w-full flex-wrap mt-12">
+
+      <div className="flex justify-between w-full flex-wrap mt-8">
         <div className="flex flex-col gap-2 select-all">
           <h2 className="text-3xl md:text-4xl font-extralight">
             Quiz completed
@@ -47,11 +48,11 @@ function QuizResult() {
                   selectedQuiz.title
                 )}`}
               />
-              <p>{selectedQuiz.title}</p>
+              <p className="text-[1.12rem] md:text-xl">{selectedQuiz.title}</p>
             </div>
             <div className="flex flex-col justify-center items-start gap-4">
-              <p className="text-9xl font-medium">{userScore}</p>
-              <p className="text-lg text-grey-navy dark:text-light-bluish">
+              <p className="text-5xl md:text-9xl font-medium">{userScore}</p>
+              <p className="text-[1.12rem] md:text-lg text-grey-navy dark:text-light-bluish">
                 out of {selectedQuiz.questions.length}
               </p>
             </div>

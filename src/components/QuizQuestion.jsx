@@ -110,7 +110,7 @@ function QuizQuestion() {
 
   return (
     <>
-      <div className="flex justify-between items-center mt-12">
+      <div className="flex justify-between items-center py-4 md:py-5 lg:py-10">
         <div className="flex items-center gap-4 md:gap-6 text-xl font-medium">
           <img
             src={selectedQuiz.icon}
@@ -119,23 +119,23 @@ function QuizQuestion() {
               selectedQuiz.title
             )}`}
           />
-          <h2>{selectedQuiz.title}</h2>
+          <h2 className="text-[1.12rem] md:text-xl">{selectedQuiz.title}</h2>
         </div>
         <ThemeSwitcher />
       </div>
 
-      <div className="flex justify-between w-full flex-wrap mt-12">
+      <div className="flex justify-between w-full flex-wrap">
         <div className="flex flex-col gap-7">
-          <p className="text-base italic text-grey-navy dark:text-light-bluish select-all">
+          <p className="text-[0.88rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
             Question {parseInt(questionIndex, 10) + 1} of{" "}
             {selectedQuiz.questions.length}
           </p>
-          <p className="text-2xl font-medium max-w-[35rem]">
+          <p className="text-base md:text-2xl font-medium max-w-[35rem]">
             {currentQuestion.question}
           </p>
         </div>
 
-        <div className="text-base font-medium w-full lg:w-[564px]">
+        <div className="text-[1rem] md:text-base font-medium w-full lg:w-[564px]">
           <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6">
             {shuffledOptions.map((option, index) => (
               <li key={index} className="group">
@@ -148,7 +148,7 @@ function QuizQuestion() {
                 />
                 <label
                   htmlFor={index}
-                  className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-3 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark ${
+                  className={`inline-flex items-center justify-between w-full cursor-pointer bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl p-2 lg:p-4 border-[3px] border-pure-white dark:border-navy transition duration-300 ease-in-out hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark ${
                     selectedAnswer === index && isAnswerSubmitted
                       ? "group-[.correct]:border-green group-[.incorrect]:border-red"
                       : "peer-checked:border-purple"
@@ -156,7 +156,7 @@ function QuizQuestion() {
                 >
                   <div className="inline-flex items-center gap-4 md:gap-8">
                     <div
-                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 max-h-10 md:min-w-12 md:max-h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
+                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:min-w-12 md:max-h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${
                         selectedAnswer === index
                           ? isAnswerSubmitted
                             ? "group-[.correct]:bg-green group-[.correct]:text-pure-white group-[.incorrect]:bg-red group-[.incorrect]:text-pure-white"
