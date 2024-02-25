@@ -182,12 +182,12 @@ function QuizQuestion() {
                   <img
                     src="/assets/icon-correct.svg"
                     alt="Correct Icon"
-                    className="hidden group-[.correct]:block"
+                    className="hidden group-[.correct]:block w-8 h-8 md:w-10 md:h-10"
                   />
                   <img
                     src="/assets/icon-incorrect.svg"
                     alt="Incorrect Icon"
-                    className="hidden group-[.incorrect]:block"
+                    className="hidden group-[.incorrect]:block w-8 h-8 md:w-10 md:h-10"
                   />
                 </label>
               </li>
