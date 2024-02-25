@@ -1,16 +1,36 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import data from "../data/data.json";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import { motion, useAnimate } from "framer-motion";
 import { getClassname } from "../utils/utils";
+import {} from "react";
 
 const Home = () => {
   const navigate = useNavigate();
   const [selectedQuizTitle, setSelectedQuizTitle] = useState(null);
+  const [scope, animate] = useAnimate();
+  const refs = useRef([]);
 
   const startQuiz = (quizTitle) => {
     setSelectedQuizTitle(quizTitle);
-    navigate(`/${quizTitle}/question/0`);
+    setTimeout(() => {
+      navigate(`/${quizTitle}/question/0`);
+    }, 1000);
+  };
+
+  const sequence = (index) => {
+    animate([
+      [refs.current[index], { scale: 1.5 }],
+      [refs.current[index], { scale: 1 }],
+    ]);
+  };
+
+  const visible = { opacity: 1, transition: { duration: 1 } };
+
+  const itemVariants = {
+    hidden: { opacity: 0 },
+    visible,
   };
 
   return (
@@ -20,7 +40,13 @@ const Home = () => {
       </div>
 
       <div className="flex justify-between w-full flex-wrap">
-        <div className="flex flex-col gap-12">
+        <motion.div
+          className="flex flex-col gap-12"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0, transition: { duration: 0 } }}
+          transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
           <div className="flex flex-col gap-2 select-all">
             <span className="text-3xl md:text-4xl font-extralight">
               Welcome to the
@@ -32,13 +58,22 @@ const Home = () => {
           <p className="text-[1rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
             Pick a subject to get started.
           </p>
-        </div>
+        </motion.div>
 
-        <ul className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]">
-          {data.quizzes.map(({ title, icon }) => (
-            <li
+        <motion.ul
+          initial="hidden"
+          animate="visible"
+          exit={{ opacity: 0, transition: { duration: 0 } }}
+          variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+          className="flex flex-col gap-3 mt-10 md:mt-16 lg:mt-0 lg:gap-6 w-full lg:w-[564px]"
+        >
+          {data.quizzes.map(({ title, icon }, index) => (
+            <motion.li
               key={title}
               className="cursor-pointer bg-pure-white dark:bg-navy border-[3px] border-pure-white dark:border-navy rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark"
+              ref={(element) => (refs.current[index] = element)}
+              onTap={() => sequence(index)}
+              variants={itemVariants}
             >
               <button
                 className="flex items-center p-2 lg:p-4 gap-4 md:gap-8 w-full"
@@ -55,9 +90,9 @@ const Home = () => {
                   {title}
                 </span>
               </button>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </>
   );

@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import Button from "./Button";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
@@ -24,7 +26,13 @@ function QuizResult() {
         <ThemeSwitcher />
       </div>
 
-      <div className="flex justify-between w-full flex-wrap mt-8">
+      <motion.div
+        className="flex justify-between w-full flex-wrap mt-8"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -100, opacity: 0, transition: { duration: 0 } }}
+        transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+      >
         <div className="flex flex-col gap-2 select-all">
           <h2 className="text-3xl md:text-4xl font-extralight">
             Quiz completed
@@ -45,7 +53,7 @@ function QuizResult() {
           </div>
           <Button onClick={handlePlayAgain}>Play again</Button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 export const SharedLayout = () => {
   return (

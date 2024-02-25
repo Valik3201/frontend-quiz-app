@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Button from "./Button";
 import ProgressBar from "./ProgressBar";
@@ -137,8 +138,13 @@ function QuizQuestion() {
 
           <ProgressBar progress={progress} />
         </div>
-
-        <div className="w-full lg:w-[564px]">
+        <motion.div
+          className="w-full lg:w-[564px]"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -100, opacity: 0, transition: { duration: 0 } }}
+          transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
           <ul className="flex flex-col gap-3 lg:gap-6 mt-10 md:mt-16 lg:mt-0 text-[1rem] md:text-base font-medium ">
             {shuffledOptions.map((option, index) => (
               <li key={index} className="group">
@@ -159,7 +165,7 @@ function QuizQuestion() {
                 >
                   <div className="inline-flex items-center gap-4 md:gap-8">
                     <div
-                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md lg:rounded-lg ${
+                      className={`transition duration-300 ease-in-out flex items-center justify-center  w-10 h-10 md:min-w-12 md:min-h-12 p-1.5 md:p-2 rounded-md lg:rounded-lg ${
                         selectedAnswer === index
                           ? isAnswerSubmitted
                             ? "group-[.correct]:bg-green group-[.correct]:text-pure-white group-[.incorrect]:bg-red group-[.incorrect]:text-pure-white"
@@ -194,7 +200,7 @@ function QuizQuestion() {
             {isAnswerSubmitted ? "Next question" : "Submit answer"}
           </Button>
           {errorVisible && <ErrorMessage message={errorMessage} />}
-        </div>
+        </motion.div>
       </div>
     </>
   );

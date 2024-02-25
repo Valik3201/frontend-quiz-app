@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "./ThemeProvider";
 
 const ThemeSwitcher = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    const isDarkMode = localStorage.getItem("darkMode") === "true";
-    setDarkMode(isDarkMode);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("darkMode", darkMode);
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
   };
 
-  const iconSun = darkMode ? "icon-sun-light.svg" : "icon-sun-dark.svg";
-  const iconMoon = darkMode ? "icon-moon-light.svg" : "icon-moon-dark.svg";
+  const iconSun = theme === "dark" ? "icon-sun-light.svg" : "icon-sun-dark.svg";
+  const iconMoon =
+    theme === "dark" ? "icon-moon-light.svg" : "icon-moon-dark.svg";
+
+  const spring = {
+    type: "spring",
+    stiffness: 700,
+    damping: 30,
+  };
 
   return (
     <div className="inline-flex items-center gap-2 md:gap-4 py-2.5">
@@ -27,16 +27,19 @@ const ThemeSwitcher = () => {
         alt="Light Theme Icon"
         className="w-4 h-4 md:w-6 md:h-6"
       />
-      <label className="relative inline-block w-8 h-5 md:w-12 md:h-7 cursor-pointer">
-        <input
-          type="checkbox"
-          checked={darkMode}
-          onChange={toggleDarkMode}
-          className="sr-only peer"
+
+      <div
+        className="w-8 h-5 md:w-12 md:h-7 flex justify-start items-center bg-purple rounded-full py-2 px-1 cursor-pointer data-[theme=dark]:justify-end"
+        data-theme={theme}
+        onClick={toggleTheme}
+      >
+        <motion.div
+          className="w-3 h-3 md:w-5 md:h-5  bg-pure-white rounded-full"
+          layout
+          transition={spring}
         />
-        <span className="absolute inset-0 bg-purple rounded-[34px]"></span>
-        <span className="absolute block w-3 h-3 md:w-5 md:h-5 bg-pure-white rounded-full left-1 bottom-1 transition duration-300 ease-in-out transform peer-checked:translate-x-3 md:peer-checked:translate-x-5"></span>
-      </label>
+      </div>
+
       <img
         src={`/assets/${iconMoon}`}
         alt="Dark Theme Icon"
