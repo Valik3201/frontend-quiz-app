@@ -21,7 +21,7 @@ const ThemeSwitcher = () => {
   const iconMoon = darkMode ? "icon-moon-light.svg" : "icon-moon-dark.svg";
 
   return (
-    <div className="inline-flex items-center gap-2 md:gap-4 mt-[6%]">
+    <div className="inline-flex items-center gap-2 md:gap-4 py-2.5">
       <img
         src={`/assets/${iconSun}`}
         alt="Light Theme Icon"
