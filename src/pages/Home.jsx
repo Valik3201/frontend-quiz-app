@@ -15,11 +15,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-end items-center mt-12">
+      <div className="flex justify-end items-center py-4 md:py-5 lg:py-10">
         <ThemeSwitcher />
       </div>
 
-      <div className="flex justify-between w-full flex-wrap mt-12">
+      <div className="flex justify-between w-full flex-wrap">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-2 select-all">
             <span className="text-3xl md:text-4xl font-extralight">
@@ -29,7 +29,7 @@ const Home = () => {
               Frontend Quiz!
             </span>
           </div>
-          <p className="text-base italic text-grey-navy dark:text-light-bluish select-all">
+          <p className="text-[1rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
             Pick a subject to get started.
           </p>
         </div>
@@ -41,7 +41,7 @@ const Home = () => {
               className="cursor-pointer bg-pure-white dark:bg-navy border-[3px] border-pure-white dark:border-navy rounded-xl md:rounded-3xl transition duration-300 ease-in-out transform hover:border-purple dark:hover:border-purple shadow-light dark:shadow-dark"
             >
               <button
-                className="flex items-center p-3 lg:p-4 gap-4 md:gap-8 w-full"
+                className="flex items-center p-2 lg:p-4 gap-4 md:gap-8 w-full"
                 onClick={() => startQuiz(title)}
               >
                 <img

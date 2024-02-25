@@ -40,6 +40,12 @@ export default {
             lineHeight: "100%",
           },
         ],
+        "5xl": [
+          "5.5rem",
+          {
+            lineHeight: "100%",
+          },
+        ],
         "4xl": [
           "4rem",
           {
