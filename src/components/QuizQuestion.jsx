@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import data from "../data/data.json";
+
 import ErrorMessage from "./ErrorMessage";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { getClassname } from "../utils/utils";
+import QuizTitle from "./QuizTitle";
+
+import data from "../data/data.json";
 
 function QuizQuestion() {
   const { quizTitle, questionIndex } = useParams();
@@ -111,16 +113,7 @@ function QuizQuestion() {
   return (
     <>
       <div className="flex justify-between items-center py-4 md:py-5 lg:py-10">
-        <div className="flex items-center gap-4 md:gap-6 text-xl font-medium">
-          <img
-            src={selectedQuiz.icon}
-            alt={`${selectedQuiz.title} icon`}
-            className={`w-10 h-10 md:w-12 md:h-12 p-1.5 md:p-2 rounded-md md:rounded-lg ${getClassname(
-              selectedQuiz.title
-            )}`}
-          />
-          <h2 className="text-[1.12rem] md:text-xl">{selectedQuiz.title}</h2>
-        </div>
+        <QuizTitle selectedQuiz={selectedQuiz} />
         <ThemeSwitcher />
       </div>
 
