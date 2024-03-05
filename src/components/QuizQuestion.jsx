@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Button from "./Button";
-import ProgressBar from "./ProgressBar";
-import ErrorMessage from "./ErrorMessage";
-import ThemeSwitcher from "./ThemeSwitcher";
-import QuizTitle from "./QuizTitle";
-import data from "../data/data.json";
 import { useDispatch, useSelector } from "react-redux";
 import {
   incrementScore,
@@ -16,6 +10,12 @@ import {
   selectTitle,
   selectCurrentQuestionIndex,
 } from "../redux/quizSelectors";
+import Button from "./Button";
+import ProgressBar from "./ProgressBar";
+import ErrorMessage from "./ErrorMessage";
+import ThemeSwitcher from "./ThemeSwitcher";
+import QuizTitle from "./QuizTitle";
+import data from "../data/data.json";
 
 function QuizQuestion() {
   const dispatch = useDispatch();
@@ -27,85 +27,48 @@ function QuizQuestion() {
   const [shuffledOptions, setShuffledOptions] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [errorVisible, setErrorVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  // Эффект для перемешивания вариантов ответов при изменении вопроса
   useEffect(() => {
     const shuffled = [...currentQuestion.options];
     shuffled.sort(() => Math.random() - 0.5);
     setShuffledOptions(shuffled);
   }, [currentQuestion]);
 
-  // Обработчик изменения выбора ответа
   const handleOptionChange = (e) => {
-    const optionIndex = parseInt(e.target.id, 10);
+    const optionIndex = +e.target.id;
     if (!isAnswerSubmitted) {
       setSelectedAnswer(optionIndex);
     }
   };
 
-  // Функция для добавления класса к выбранному варианту ответа
-  const addClassToOption = (index, className) => {
-    const optionElement = document.querySelector(`li:nth-child(${index + 1})`);
-    if (optionElement) {
-      optionElement.classList.add(className);
-    }
-  };
+  const correctAnswerIndex = shuffledOptions.findIndex(
+    (option) => option === currentQuestion.answer
+  );
 
-  // Обработчик отправки ответа
   const handleSubmit = () => {
     setErrorVisible(false);
-    const radioInputs = document.querySelectorAll('input[type="radio"]');
-    if (selectedAnswer !== null) {
-      radioInputs.forEach((input) => {
-        input.disabled = true;
-      });
-    }
+
     if (selectedAnswer !== null) {
       const selectedOption = shuffledOptions[selectedAnswer];
-      const isCorrect = selectedOption === currentQuestion.answer;
-      setIsAnswerSubmitted(true);
-      if (!isCorrect) {
-        addClassToOption(selectedAnswer, "incorrect");
-        addClassToOption(
-          shuffledOptions.findIndex(
-            (option) => option === currentQuestion.answer
-          ),
-          "correct"
-        );
-      } else {
-        addClassToOption(selectedAnswer, "correct");
-      }
-      if (isCorrect) {
+
+      if (selectedOption === currentQuestion.answer) {
+        setIsCorrect(true);
         dispatch(incrementScore());
       }
+
+      setIsAnswerSubmitted(true);
     } else {
-      setErrorMessage("Please select an answer");
       setErrorVisible(true);
     }
   };
 
-  // Обработчик перехода к следующему вопросу
   const handleNextQuestion = () => {
     setSelectedAnswer(null);
-    const nextQuestionIndex = parseInt(questionIndex, 10) + 1;
+    setIsCorrect(false);
+    const nextQuestionIndex = +questionIndex + 1;
     dispatch(setCurrentQuestionIndex(nextQuestionIndex));
-
-    const radioInputs = document.querySelectorAll('input[type="radio"]');
-    radioInputs.forEach((input) => {
-      input.checked = false;
-      input.disabled = false;
-    });
-
-    shuffledOptions.forEach((_option, index) => {
-      const optionElement = document.querySelector(
-        `li:nth-child(${index + 1})`
-      );
-      if (optionElement) {
-        optionElement.classList.remove("correct", "incorrect");
-      }
-    });
 
     if (nextQuestionIndex < selectedQuiz.questions.length) {
       setIsAnswerSubmitted(false);
@@ -114,8 +77,7 @@ function QuizQuestion() {
     }
   };
 
-  const progress =
-    ((parseInt(questionIndex, 10) + 1) / selectedQuiz.questions.length) * 100;
+  const progress = ((+questionIndex + 1) / selectedQuiz.questions.length) * 100;
 
   return (
     <>
@@ -128,8 +90,7 @@ function QuizQuestion() {
         <div className="flex w-full lg:w-auto flex-col justify-between max-h-[416px]">
           <div className="flex flex-col gap-7 mb-6 md:mb-10 lg:mb-0">
             <p className="text-[0.88rem] md:text-base italic text-grey-navy dark:text-light-bluish select-all">
-              Question {parseInt(questionIndex, 10) + 1} of{" "}
-              {selectedQuiz.questions.length}
+              Question {+questionIndex + 1} of {selectedQuiz.questions.length}
             </p>
 
             <p className="text-base md:text-2xl font-medium max-w-[35rem]">
@@ -148,13 +109,28 @@ function QuizQuestion() {
         >
           <ul className="flex flex-col gap-3 lg:gap-6 mt-10 md:mt-16 lg:mt-0 text-[1rem] md:text-base font-medium ">
             {shuffledOptions.map((option, index) => (
-              <li key={index} className="group">
+              <li
+                key={index}
+                className={`group ${
+                  isAnswerSubmitted && index === selectedAnswer && isCorrect
+                    ? "correct"
+                    : isAnswerSubmitted &&
+                      index === selectedAnswer &&
+                      !isCorrect
+                    ? "incorrect"
+                    : isAnswerSubmitted && index === correctAnswerIndex
+                    ? "correct"
+                    : ""
+                }`}
+              >
                 <input
                   type="radio"
                   id={index}
                   name="option"
                   className="hidden peer"
                   onChange={handleOptionChange}
+                  disabled={isAnswerSubmitted}
+                  checked={selectedAnswer === index}
                 />
                 <label
                   htmlFor={index}
@@ -200,7 +176,7 @@ function QuizQuestion() {
           >
             {isAnswerSubmitted ? "Next question" : "Submit answer"}
           </Button>
-          {errorVisible && <ErrorMessage message={errorMessage} />}
+          {errorVisible && <ErrorMessage />}
         </motion.div>
       </div>
     </>

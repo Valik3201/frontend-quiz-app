@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import Button from "./Button";
-import ThemeSwitcher from "./ThemeSwitcher";
-import QuizTitle from "./QuizTitle";
 import { useDispatch, useSelector } from "react-redux";
 import { resetQuiz } from "../redux/quizSlice";
 import { selectTitle, selectScore } from "../redux/quizSelectors";
-
+import Button from "./Button";
+import ThemeSwitcher from "./ThemeSwitcher";
+import QuizTitle from "./QuizTitle";
 import data from "../data/data.json";
 
 function QuizResult() {

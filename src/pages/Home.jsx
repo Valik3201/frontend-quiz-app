@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
-import data from "../data/data.json";
-import ThemeSwitcher from "../components/ThemeSwitcher";
 import { motion, useAnimate } from "framer-motion";
 import { getClassname } from "../utils/utils";
 import { useDispatch } from "react-redux";
 import { setStartQuiz } from "../redux/quizSlice";
 import QuizQuestion from "../components/QuizQuestion";
+import data from "../data/data.json";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 const Home = () => {
   const dispatch = useDispatch();
