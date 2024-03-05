@@ -1,22 +1,25 @@
-import { useParams, useNavigate } from "react-router-dom";
-
 import { motion } from "framer-motion";
-
 import Button from "./Button";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
+import { useDispatch, useSelector } from "react-redux";
+import { resetQuiz } from "../redux/quizSlice";
+import { selectTitle, selectScore } from "../redux/quizSelectors";
 
 import data from "../data/data.json";
 
 function QuizResult() {
-  const { quizTitle } = useParams();
-  const selectedQuiz = data.quizzes.find((quiz) => quiz.title === quizTitle);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const quizTitle = useSelector(selectTitle);
 
-  const userScore = localStorage.getItem(`${quizTitle}-score`) || 0;
+  const selectedQuiz = data.quizzes.find((quiz) => quiz.title === quizTitle);
+
+  console.debug(selectedQuiz);
+
+  const userScore = useSelector(selectScore);
 
   const handlePlayAgain = () => {
-    navigate("/");
+    dispatch(resetQuiz());
   };
 
   return (

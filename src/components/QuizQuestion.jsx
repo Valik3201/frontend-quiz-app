@@ -1,42 +1,51 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-
 import Button from "./Button";
 import ProgressBar from "./ProgressBar";
 import ErrorMessage from "./ErrorMessage";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
-
 import data from "../data/data.json";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  incrementScore,
+  setCurrentQuestionIndex,
+  setFinishQuiz,
+} from "../redux/quizSlice";
+import {
+  selectTitle,
+  selectCurrentQuestionIndex,
+} from "../redux/quizSelectors";
 
 function QuizQuestion() {
-  const { quizTitle, questionIndex } = useParams();
+  const dispatch = useDispatch();
+  const quizTitle = useSelector(selectTitle);
+  const questionIndex = useSelector(selectCurrentQuestionIndex);
+
   const selectedQuiz = data.quizzes.find((quiz) => quiz.title === quizTitle);
   const currentQuestion = selectedQuiz.questions[questionIndex];
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [shuffledOptions, setShuffledOptions] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
   const [errorVisible, setErrorVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const navigate = useNavigate();
-
+  // Эффект для перемешивания вариантов ответов при изменении вопроса
   useEffect(() => {
     const shuffled = [...currentQuestion.options];
     shuffled.sort(() => Math.random() - 0.5);
     setShuffledOptions(shuffled);
   }, [currentQuestion]);
 
+  // Обработчик изменения выбора ответа
   const handleOptionChange = (e) => {
     const optionIndex = parseInt(e.target.id, 10);
-
     if (!isAnswerSubmitted) {
       setSelectedAnswer(optionIndex);
     }
   };
 
+  // Функция для добавления класса к выбранному варианту ответа
   const addClassToOption = (index, className) => {
     const optionElement = document.querySelector(`li:nth-child(${index + 1})`);
     if (optionElement) {
@@ -44,23 +53,19 @@ function QuizQuestion() {
     }
   };
 
+  // Обработчик отправки ответа
   const handleSubmit = () => {
     setErrorVisible(false);
-
     const radioInputs = document.querySelectorAll('input[type="radio"]');
     if (selectedAnswer !== null) {
       radioInputs.forEach((input) => {
         input.disabled = true;
       });
     }
-
     if (selectedAnswer !== null) {
       const selectedOption = shuffledOptions[selectedAnswer];
-
       const isCorrect = selectedOption === currentQuestion.answer;
-
       setIsAnswerSubmitted(true);
-
       if (!isCorrect) {
         addClassToOption(selectedAnswer, "incorrect");
         addClassToOption(
@@ -72,12 +77,8 @@ function QuizQuestion() {
       } else {
         addClassToOption(selectedAnswer, "correct");
       }
-
       if (isCorrect) {
-        if (correctAnswersCount + 1 <= selectedQuiz.questions.length) {
-          setCorrectAnswersCount((prevCount) => prevCount + 1);
-          localStorage.setItem(`${quizTitle}-score`, correctAnswersCount + 1);
-        }
+        dispatch(incrementScore());
       }
     } else {
       setErrorMessage("Please select an answer");
@@ -85,10 +86,11 @@ function QuizQuestion() {
     }
   };
 
+  // Обработчик перехода к следующему вопросу
   const handleNextQuestion = () => {
     setSelectedAnswer(null);
-
     const nextQuestionIndex = parseInt(questionIndex, 10) + 1;
+    dispatch(setCurrentQuestionIndex(nextQuestionIndex));
 
     const radioInputs = document.querySelectorAll('input[type="radio"]');
     radioInputs.forEach((input) => {
@@ -107,9 +109,8 @@ function QuizQuestion() {
 
     if (nextQuestionIndex < selectedQuiz.questions.length) {
       setIsAnswerSubmitted(false);
-      navigate(`/${quizTitle}/question/${nextQuestionIndex}`);
     } else {
-      navigate(`/${quizTitle}/result`);
+      dispatch(setFinishQuiz());
     }
   };
 

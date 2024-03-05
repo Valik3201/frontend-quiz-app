@@ -1,22 +1,26 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import data from "../data/data.json";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { motion, useAnimate } from "framer-motion";
 import { getClassname } from "../utils/utils";
-import {} from "react";
+import { useDispatch } from "react-redux";
+import { setStartQuiz } from "../redux/quizSlice";
+import QuizQuestion from "../components/QuizQuestion";
 
 const Home = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [selectedQuizTitle, setSelectedQuizTitle] = useState(null);
   const [scope, animate] = useAnimate();
   const refs = useRef([]);
 
   const startQuiz = (quizTitle) => {
     setSelectedQuizTitle(quizTitle);
+
     setTimeout(() => {
-      navigate(`/${quizTitle}/question/0`);
+      dispatch(setStartQuiz(quizTitle));
     }, 1000);
+
+    return <QuizQuestion />;
   };
 
   const sequence = (index) => {
