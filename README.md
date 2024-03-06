@@ -28,7 +28,7 @@ Please feel free to reach out with any issues or suggestions!
 ## Links
 
 - Solution URL:
-  <!-- [![Frontend Mentor Badge](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=fff&style=flat)](https://www.frontendmentor.io/) -->
+  [![Frontend Mentor Badge](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=fff&style=flat)](https://www.frontendmentor.io/solutions/frontend-quiz-app-react-redux-framer-vercel-U0akGpRn0o)
 - Live Site URL:
   [![Vercel Badge](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=fff&style=flat)](https://valik3201-frontend-quiz-app.vercel.app)
 
@@ -42,6 +42,8 @@ Please feel free to reach out with any issues or suggestions!
 
 [![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-3.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-3.png)
 
+[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)
+
 ## Author
 
 [![Frontend Mentor Badge](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=fff&style=flat)](https://www.frontendmentor.io/profile/Valik3201)
@@ -49,8 +51,6 @@ Please feel free to reach out with any issues or suggestions!
 [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=flat)](https://www.linkedin.com/in/valentynchernetskyi/)
 [![Telegram Badge](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=fff&style=flat)](https://t.me/valik3201)
 [![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fff&style=flat)](https://www.instagram.com/valik_chern/)
-
-[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)
 
 ## Acknowledgments
 
