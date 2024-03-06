@@ -9,9 +9,9 @@ This repository contains my solution to the Frontend Quiz challenge on Frontend 
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
 ![Vercel Badge](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=fff&style=flat)
 
-## About The Project
+[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-1.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-1.png)
 
-About the project:
+## About The Project
 
 Frontend Quiz App is a single-page application (SPA) built with React using the Vite build tool, aimed at providing a faster and more efficient development experience for modern web projects. For state management, it utilizes React Redux and React Redux Toolkit (RTK), enhancing productivity and maintainability.
 
@@ -23,7 +23,7 @@ Additionally, I incorporated animations using Framer Motion, enhancing the user 
 
 Please feel free to reach out with any issues or suggestions!
 
-## Screenshot
+[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-2.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-2.png)
 
 ## Links
 
@@ -40,6 +40,8 @@ Please feel free to reach out with any issues or suggestions!
 - **Tailwind CSS**: A utility-first CSS framework for creating custom, responsive designs with ease.
 - **Framer Motion**: A library for adding smooth animations and interactive motion effects to web applications.
 
+[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-3.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-3.png)
+
 ## Author
 
 [![Frontend Mentor Badge](https://img.shields.io/badge/Frontend%20Mentor-3F54A3?logo=frontendmentor&logoColor=fff&style=flat)](https://www.frontendmentor.io/profile/Valik3201)
@@ -47,6 +49,8 @@ Please feel free to reach out with any issues or suggestions!
 [![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff&style=flat)](https://www.linkedin.com/in/valentynchernetskyi/)
 [![Telegram Badge](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=fff&style=flat)](https://t.me/valik3201)
 [![Instagram Badge](https://img.shields.io/badge/Instagram-E4405F?logo=instagram&logoColor=fff&style=flat)](https://www.instagram.com/valik_chern/)
+
+[![ScreenShot](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)](https://github.com/Valik3201/frontend-quiz-app/blob/main/assets/shots-4.png)
 
 ## Acknowledgments
 
