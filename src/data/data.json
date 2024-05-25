@@ -864,7 +864,7 @@
           "answer": "Because that would create two instances of the same state that could become out of sync"
         },
         {
-          "question": "What is the purpose of the useEffect Hook in the following code?\n\nuseEffect(() => {\n  document.title = `Count: ${count}`;\n}, [count]);",
+          "question": "What is the purpose of the useEffect Hook in the following code?\n\n```useEffect(() => {\n  document.title = `Count: ${count}`;\n}, [count]);\n```",
           "options": [
             "To update the document title when count changes",
             "To fetch data from an API",
