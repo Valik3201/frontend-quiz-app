@@ -18,21 +18,21 @@ export default {
         xl: "8rem",
       },
     },
-    colors: {
-      "dark-navy": "#313E51",
-      "grey-navy": "#626C7F",
-      "light-bluish": "#ABC1E1",
-      "light-grey": "#F4F6FA",
-      green: "#26D782",
-      navy: "#3B4D66",
-      purple: "#A729F5",
-      red: "#EE5454",
-      "pure-white": "#FFFFFF",
-    },
     fontFamily: {
       display: ["Rubik", "sans-serif"],
     },
     extend: {
+      colors: {
+        "dark-navy": "#313E51",
+        "grey-navy": "#626C7F",
+        "light-bluish": "#ABC1E1",
+        "light-grey": "#F4F6FA",
+        green: "#26D782",
+        navy: "#3B4D66",
+        purple: "#A729F5",
+        red: "#EE5454",
+        "pure-white": "#FFFFFF",
+      },
       fontSize: {
         "9xl": [
           "9rem",
