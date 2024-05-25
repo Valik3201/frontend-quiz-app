@@ -26,7 +26,7 @@ const QuestionDisplay = ({ questionText }) => {
       parts.push(
         <pre
           key={match.index}
-          className="bg-dark-navy text-light-grey mt-4 p-4 rounded"
+          className="bg-dark-navy text-light-grey mt-4 p-4 rounded dark:bg-light-grey dark:text-dark-navy"
         >
           <code>{match[1]}</code>
         </pre>
