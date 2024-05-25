@@ -16,6 +16,7 @@ import ErrorMessage from "./ErrorMessage";
 import ThemeSwitcher from "./ThemeSwitcher";
 import QuizTitle from "./QuizTitle";
 import data from "../data/data.json";
+import QuestionDisplay from "./QuestionDisplay";
 
 function QuizQuestion() {
   const dispatch = useDispatch();
@@ -93,9 +94,7 @@ function QuizQuestion() {
               Question {+questionIndex + 1} of {selectedQuiz.questions.length}
             </p>
 
-            <p className="text-base md:text-2xl font-medium max-w-[35rem]">
-              {currentQuestion.question}
-            </p>
+            <QuestionDisplay questionText={currentQuestion.question} />
           </div>
 
           <ProgressBar progress={progress} />
