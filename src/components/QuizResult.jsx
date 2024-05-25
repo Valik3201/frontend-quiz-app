@@ -46,7 +46,7 @@ function QuizResult() {
           <div className="flex flex-col items-center gap-3 md:gap-8 p-8 md:p-12 w-full lg:w-[564px] bg-pure-white dark:bg-navy rounded-xl md:rounded-3xl border-[3px] border-pure-white dark:border-navy shadow-light dark:shadow-dark ">
             <QuizTitle selectedQuiz={selectedQuiz} />
 
-            <div className="flex flex-col justify-center items-start gap-4">
+            <div className="flex flex-col items-center gap-4">
               <p className="text-5xl md:text-9xl font-medium">{userScore}</p>
               <p className="text-[1.12rem] md:text-lg text-grey-navy dark:text-light-bluish">
                 out of {selectedQuiz.questions.length}

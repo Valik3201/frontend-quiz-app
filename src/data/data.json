@@ -15,6 +15,16 @@
           "answer": "Hyper Text Markup Language"
         },
         {
+          "question": "Who is making the Web standards?",
+          "options": [
+            "The World Wide Web Consortium",
+            "Mozilla",
+            "Google",
+            "Microsoft"
+          ],
+          "answer": "The World Wide Web Consortium"
+        },
+        {
           "question": "Which of the following is the correct structure for an HTML document?",
           "options": [
             "<html><head></head><body></body></html>",
@@ -25,9 +35,14 @@
           "answer": "<html><head></head><body></body></html>"
         },
         {
-          "question": "Which HTML element is used to define the title of a document?",
-          "options": ["<head>", "<title>", "<header>", "<top>"],
+          "question": "Which HTML element defines the title of a document?",
+          "options": ["<title>", "<meta>", "<head>"],
           "answer": "<title>"
+        },
+        {
+          "question": "Which HTML element is used to specify a header for a document or section?",
+          "options": ["<head>", "<section>", "<header>", "<top>"],
+          "answer": "<header>"
         },
         {
           "question": "What is the purpose of the <body> tag in HTML?",
@@ -40,19 +55,19 @@
           "answer": "It contains all the content such as text, images, and links."
         },
         {
-          "question": "Which HTML tag is used to create a hyperlink?",
-          "options": ["<hyperlink>", "<link>", "<a>", "<href>"],
-          "answer": "<a>"
+          "question": "Choose the correct HTML element for the largest heading:",
+          "options": ["<h1>", "<head>", "<heading>", "<h6>"],
+          "answer": "<h1>"
         },
         {
-          "question": "Which tag is used to display images in HTML?",
-          "options": ["<img>", "<image>", "<src>", "<pic>"],
-          "answer": "<img>"
-        },
-        {
-          "question": "What attribute is used to provide the path of an image in the <img> tag?",
-          "options": ["link", "src", "href", "url"],
-          "answer": "src"
+          "question": "What is the correct HTML for inserting an image?",
+          "options": [
+            "<img src=\"image.gif\" alt=\"MyImage\">",
+            "<img href=\"image.gif\" alt=\"MyImage\">",
+            "<imgage href=\"image.gif\" alt=\"MyImage\">",
+            "<img alt=\"MyImage\">image.gif</img>"
+          ],
+          "answer": "<img src=\"image.gif\" alt=\"MyImage\">"
         },
         {
           "question": "Which HTML tag is used to create an unordered list?",
@@ -60,14 +75,24 @@
           "answer": "<ul>"
         },
         {
-          "question": "What does the <br> tag do?",
-          "options": [
-            "It breaks the text into two sections.",
-            "It creates a bold text.",
-            "It inserts a line break.",
-            "It adds a new row in a table."
-          ],
-          "answer": "It inserts a line break."
+          "question": "What is the correct HTML element for inserting a line break?",
+          "options": ["<br>", "<break>", "<lb>", "<hr>"],
+          "answer": "<br>"
+        },
+        {
+          "question": "In HTML, you can embed SVG elements directly into an HTML page.",
+          "options": ["True", "False"],
+          "answer": "True"
+        },
+        {
+          "question": "What is the correct HTML element for playing video files?",
+          "options": ["<video>", "<media>", "<movie>"],
+          "answer": "<video>"
+        },
+        {
+          "question": "What is the correct HTML element for playing audio files?",
+          "options": ["<audio>", "<mp3>", "<sound>"],
+          "answer": "<audio>"
         },
         {
           "question": "In HTML, what does the `fieldset` tag do?",
@@ -78,6 +103,124 @@
             "It hides the fields in a form."
           ],
           "answer": "It is used to group related data in a form."
+        },
+        {
+          "question": "What is the correct HTML for making a checkbox?",
+          "options": [
+            "<input type=\"checkbox\">",
+            "<checkbox>",
+            "<input type=\"check\">",
+            "<check>"
+          ],
+          "answer": "<input type=\"checkbox\">"
+        },
+        {
+          "question": "What is the correct HTML for making a text input field?",
+          "options": [
+            "<textfield>",
+            "<textinput type=\"text\">",
+            "<input type=\"text\">",
+            "<input type=\"textfield\">"
+          ],
+          "answer": "<input type=\"text\">"
+        },
+        {
+          "question": "What is the correct HTML for making a drop-down list?",
+          "options": [
+            "<select>",
+            "<input type=\"list\">",
+            "<list>",
+            "<input type=\"dropdown\">"
+          ],
+          "answer": "<select>"
+        },
+        {
+          "question": "Block elements are normally displayed without starting a new line.",
+          "options": ["True", "False"],
+          "answer": "False"
+        },
+        {
+          "question": "Which of these elements are all <table> elements?",
+          "options": [
+            "<table><tr><td>",
+            "<table><tr><tt>",
+            "<table><head><tfoot>",
+            "<thead><body><tr>"
+          ],
+          "answer": "<table><tr><td>"
+        },
+        {
+          "question": "Choose the correct HTML element to define important text",
+          "options": ["<strong>", "<b>", "<important>", "<i>"],
+          "answer": "<strong>"
+        },
+        {
+          "question": "Choose the correct HTML element to define emphasized text",
+          "options": ["<em>", "<italic>", "<i>"],
+          "answer": "<em>"
+        },
+        {
+          "question": "Inline elements are normally displayed without starting a new line.",
+          "options": ["True", "False"],
+          "answer": "True"
+        },
+        {
+          "question": "What is the correct HTML for making a text area?",
+          "options": [
+            "<textarea>",
+            "<input type=\"textarea\">",
+            "<input type=\"textbox\">"
+          ],
+          "answer": "<textarea>"
+        },
+        {
+          "question": "An <iframe> is used to display a web page within a web page.",
+          "options": ["False", "True", "There is no such thing as an <iframe>"],
+          "answer": "True"
+        },
+        {
+          "question": "The HTML global attribute, \"contenteditable\" is used to:",
+          "options": [
+            "Update content from the server",
+            "Specify whether the content of an element should be editable or not",
+            "Specifies a context menu for an element. The menu appears when a user right-clicks on the element",
+            "Return the position of the first found occurrence of content inside a string"
+          ],
+          "answer": "Specify whether the content of an element should be editable or not"
+        },
+        {
+          "question": "In HTML, onblur and onfocus are:",
+          "options": ["Style attributes", "Event attributes", "HTML elements"],
+          "answer": "Event attributes"
+        },
+        {
+          "question": "The HTML <canvas> element is used to:",
+          "options": [
+            "draw graphics",
+            "create draggable elements",
+            "manipulate data in MySQL",
+            "display database records"
+          ],
+          "answer": "draw graphics"
+        },
+        {
+          "question": "Which input type defines a slider control?",
+          "options": ["range", "slider", "controls", "search"],
+          "answer": "range"
+        },
+        {
+          "question": "Which HTML element is used to display a scalar measurement within a range?",
+          "options": ["<meter>", "<range>", "<measure>", "<gauge>"],
+          "answer": "<meter>"
+        },
+        {
+          "question": "In HTML, what does the <aside> element define?",
+          "options": [
+            "A navigation list to be shown at the left side of the page",
+            "Content aside from the page content",
+            "The ASCII character-set; to send information between computers on the Internet"
+          ],
+          "answer": "Content aside from the page content"
         }
       ]
     },
@@ -96,8 +239,22 @@
           "answer": "Cascading Style Sheets"
         },
         {
+          "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
+          "options": [
+            "In the <head> section",
+            "At the end of the document",
+            "In the <body> section"
+          ],
+          "answer": "In the <head> section"
+        },
+        {
+          "question": "Which HTML tag is used to define an internal style sheet?",
+          "options": ["<style>", "<script>", "<css>"],
+          "answer": "<style>"
+        },
+        {
           "question": "Which HTML attribute is used to define inline styles?",
-          "options": ["styles", "style", "class", "font-style"],
+          "options": ["style", "styles", "font", "class"],
           "answer": "style"
         },
         {
@@ -130,8 +287,8 @@
           "options": [
             "text-transform: capitalize",
             "text-transform: uppercase",
-            "text-style: capital",
-            "font-transform: capitalize"
+            "font-transform: capitalize",
+            "You can't do that with CSS"
           ],
           "answer": "text-transform: capitalize"
         },
@@ -139,6 +296,20 @@
           "question": "How do you select an element with the class name 'header'?",
           "options": [".header", "#header", "header", "*header"],
           "answer": ".header"
+        },
+        {
+          "question": "How do you select an element with id 'demo'?",
+          "options": ["#demo", "*demo", "demo", ".demo"],
+          "answer": "#demo"
+        },
+        {
+          "question": "How do you add a background color for all <h1> elements?",
+          "options": [
+            "h1 {background-color:#FFFFFF;}",
+            "all.h1 {background-color:#FFFFFF;}",
+            "h1.all {background-color:#FFFFFF;}"
+          ],
+          "answer": "h1 {background-color:#FFFFFF;}"
         },
         {
           "question": "What is the default value of the 'position' property?",
@@ -154,6 +325,50 @@
             "To create a zoom effect"
           ],
           "answer": "To specify the stack order of an element"
+        },
+        {
+          "question": "How do you display a border like this: \n\nThe top border = 10 pixels, \nThe bottom border = 5 pixels, \nThe left border = 20 pixels, \nThe right border = 1pixel?",
+          "options": [
+            "border-width: 10px 1px 5px 20px;",
+            "border-width: 10px 5px 20px 1px;",
+            "border-width: 10px 20px 5px 1px;",
+            "border-width: 5px 20px 10px 1px;"
+          ],
+          "answer": "border-width: 10px 1px 5px 20px;"
+        },
+        {
+          "question": "Which property is used to change the left margin of an element?",
+          "options": ["margin-left", "padding-left", "indent"],
+          "answer": "margin-left"
+        },
+        {
+          "question": "When using the padding property; are you allowed to use negative values?",
+          "options": ["No", "Yes"],
+          "answer": "No"
+        },
+        {
+          "question": "How do you make a list that lists its items with squares?",
+          "options": [
+            "list-type: square;",
+            "list-style-type: square;",
+            "list: square;"
+          ],
+          "answer": "list-style-type: square;"
+        },
+        {
+          "question": "How do you select all p elements inside a div element?",
+          "options": ["div p", "div.p", "div + p"],
+          "answer": "div p"
+        },
+
+        {
+          "question": "How do you group selectors?",
+          "options": [
+            "Separate each selector with a space",
+            "Separate each selector with a comma",
+            "Separate each selector with a plus sign"
+          ],
+          "answer": "Separate each selector with a comma"
         }
       ]
     },
@@ -170,6 +385,29 @@
             "msgBox('Hello World');"
           ],
           "answer": "alert('Hello World');"
+        },
+        {
+          "question": "Where is the correct place to insert a JavaScript?",
+          "options": [
+            "Both the <head> section and the <body> section are correct",
+            "The <head> section",
+            "The <body> section"
+          ],
+          "answer": "Both the <head> section and the <body> section are correct"
+        },
+        {
+          "question": "What is the correct syntax for referring to an external script called \"main.js\"?",
+          "options": [
+            "<script src=\"main.js\">",
+            "<script name=\"main.js\">",
+            "<script href=\"main.js\">"
+          ],
+          "answer": "<script src=\"main.js\">"
+        },
+        {
+          "question": "The external JavaScript file must contain the <script> tag.",
+          "options": ["True", "False"],
+          "answer": "False"
         },
         {
           "question": "How do you call a function named 'myFunction'?",
@@ -207,6 +445,15 @@
           "answer": "for (i = 0; i <= 5; i++)"
         },
         {
+          "question": "How does a WHILE loop start?",
+          "options": [
+            "while (i <= 10)",
+            "while (i <= 10; i++)",
+            "while i = 1 to 10"
+          ],
+          "answer": "while (i <= 10)"
+        },
+        {
           "question": "How can you add a single-line comment in JavaScript?",
           "options": [
             "'This is a single-line comment",
@@ -227,16 +474,6 @@
           "answer": "var colors = ['red', 'green', 'blue']"
         },
         {
-          "question": "How do you find the number with the highest value of x and y?",
-          "options": [
-            "Math.ceil(x, y)",
-            "top(x, y)",
-            "Math.max(x, y)",
-            "Math.highest(x, y)"
-          ],
-          "answer": "Math.max(x, y)"
-        },
-        {
           "question": "Which operator is used to assign a value to a variable?",
           "options": ["-", "*", "=", "x"],
           "answer": "="
@@ -250,6 +487,94 @@
             "var person = (firstName = 'John', lastName = 'Doe');"
           ],
           "answer": "var person = {firstName: 'John', lastName: 'Doe'};"
+        },
+        {
+          "question": "How do you round the number 7.25, to the nearest integer?",
+          "options": [
+            "Math.round(7.25)",
+            "Math.rnd(7.25)",
+            "rnd(7.25)",
+            "round(7.25)"
+          ],
+          "answer": "Math.round(7.25)"
+        },
+        {
+          "question": "How do you find the number with the highest value of x and y?",
+          "options": [
+            "Math.max(x, y)",
+            "ceil(x, y)",
+            "top(x, y)",
+            "Math.ceil(x, y)"
+          ],
+          "answer": "Math.max(x, y)"
+        },
+        {
+          "question": "What is the correct JavaScript syntax for opening a new window called \"w2\"?",
+          "options": [
+            "w2 = window.new(\"http://www.w3schools.com\");",
+            "w2 = window.open(\"http://www.w3schools.com\");"
+          ],
+          "answer": "w2 = window.open(\"http://www.w3schools.com\");"
+        },
+        {
+          "question": "How can you detect the client's browser name?",
+          "options": ["browser.name", "navigator.appName", "client.navName"],
+          "answer": "navigator.appName"
+        },
+        {
+          "question": "Which event occurs when the user clicks on an HTML element?",
+          "options": ["onclick", "onmouseclick", "onmouseover", "onchange"],
+          "answer": "onclick"
+        },
+        {
+          "question": "What is the output of the following JavaScript code?\n\n```(function() {\n    var a = b = 5;\n})();\n\nconsole.log(b);\n```",
+          "options": ["ReferenceError", "undefined", "5", "TypeError"],
+          "answer": "5"
+        },
+        {
+          "question": "How can you create an object in JavaScript with a prototype?",
+          "options": [
+            "var obj = Object.create(proto);",
+            "var obj = new proto();",
+            "var obj = proto.create();",
+            "var obj = proto.prototype();"
+          ],
+          "answer": "var obj = Object.create(proto);"
+        },
+        {
+          "question": "What is the difference between '==' and '===' in JavaScript?",
+          "options": [
+            "'==' checks for value equality, while '===' checks for both value and type equality.",
+            "'==' checks for type equality, while '===' checks for value equality.",
+            "Both '==' and '===' check for both value and type equality.",
+            "'==' checks for value equality, while '===' is used for variable assignment."
+          ],
+          "answer": "'==' checks for value equality, while '===' checks for both value and type equality."
+        },
+        {
+          "question": "Which method is used to parse a JSON string into a JavaScript object?",
+          "options": [
+            "JSON.parse()",
+            "JSON.stringify()",
+            "JSON.convert()",
+            "JSON.toObject()"
+          ],
+          "answer": "JSON.parse()"
+        },
+        {
+          "question": "What will be the output of the following JavaScript code?\n\n```console.log(0.1 + 0.2 === 0.3);\n```",
+          "options": ["true", "false", "undefined", "NaN"],
+          "answer": "false"
+        },
+        {
+          "question": "What will be the output of the following JavaScript code?\n\n```console.log(typeof NaN);\n```",
+          "options": ["number", "NaN", "undefined", "object"],
+          "answer": "number"
+        },
+        {
+          "question": "What is the result of the following code?\n\n```let a = [1, 2, 3];\nlet b = a;\nb.push(4);\nconsole.log(a === b);\n```",
+          "options": ["true", "false", "ReferenceError", "TypeError"],
+          "answer": "true"
         }
       ]
     },
@@ -346,6 +671,207 @@
             "JavaScript Console"
           ],
           "answer": "Google Lighthouse"
+        }
+      ]
+    },
+    {
+      "title": "React",
+      "icon": "/assets/icon-react.svg",
+      "questions": [
+        {
+          "question": "What is the correct command to create a new React project?",
+          "options": [
+            "npx create-react-app myReactApp",
+            "npx create-react-app",
+            "npm create-react-app myReactApp",
+            "npm create-react-app"
+          ],
+          "answer": "npx create-react-app myReactApp"
+        },
+        {
+          "question": "What does myReactApp refer to in the following command?\n\n```npx create-react-app myReactApp\n```",
+          "options": [
+            "The directory to create the new app in",
+            "The type of app to create",
+            "A reference to an existing app",
+            "The name you want to use for the new app"
+          ],
+          "answer": "The name you want to use for the new app"
+        },
+        {
+          "question": "What command is used to start the React local development server?",
+          "options": ["npm start", "npm build", "npm run dev", "npm serve"],
+          "answer": "npm start"
+        },
+        {
+          "question": "What is the default local host port that a React development server uses?",
+          "options": ["3000", "3500", "5000", "8080"],
+          "answer": "3000"
+        },
+        {
+          "question": "To develop and run React code, Node.js is required.",
+          "options": ["True", "False"],
+          "answer": "True"
+        },
+        {
+          "question": "What is the children prop?",
+          "options": [
+            "A property that lets you set an object as a property",
+            "A property that lets you pass data to child components",
+            "A property that adds child values to state",
+            "A property that lets you nest components in other components"
+          ],
+          "answer": "A property that lets you nest components in other components"
+        },
+        {
+          "question": "Which keyword creates a constant in JavaScript?",
+          "options": ["const", "var", "let", "constant"],
+          "answer": "const"
+        },
+        {
+          "question": "A copy of the 'real' DOM that is kept in memory is called what?",
+          "options": ["Virtual DOM", "DOM", "React DOM", "Shadow DOM"],
+          "answer": "Virtual DOM"
+        },
+        {
+          "question": "React component names must begin with an uppercase letter.",
+          "options": ["True", "False"],
+          "answer": "True"
+        },
+        {
+          "question": "Which operator can be used to conditionally render a React component?",
+          "options": ["&&", "::", "||", "??"],
+          "answer": "&&"
+        },
+        {
+          "question": "When rendering a list using the JavaScript map() method, what is required for each element rendered?",
+          "options": ["key", "id", "index", "data"],
+          "answer": "key"
+        },
+        {
+          "question": "What tool does React use to compile JSX?",
+          "options": ["Babel", "React Router", "JSX Compiler", "ReactDOM"],
+          "answer": "Babel"
+        },
+        {
+          "question": "How can you optimize performance for a function component that always renders the same way?",
+          "options": [
+            "Use the useMemo Hook.",
+            "Use the useReducer Hook.",
+            "Use the shouldComponentUpdate lifecycle method.",
+            "Wrap it in the React.memo higher-order component."
+          ],
+          "answer": "Wrap it in the React.memo higher-order component."
+        },
+        {
+          "question": "What props will be available to the following component?\n\n```<Car {...props} />\n```",
+          "options": [
+            "all of them",
+            "children",
+            "only static ones",
+            "only updated ones"
+          ],
+          "answer": "all of them"
+        },
+        {
+          "question": "What is a common use case for ref?",
+          "options": [
+            "To bind the function",
+            "To refer to a function",
+            "To refer to another JavaScript file",
+            "To directly access a DOM node"
+          ],
+          "answer": "To directly access a DOM node"
+        },
+        {
+          "question": "How can you combine the following arrays using the spread operator?\n\n```const array1 = [1, 2, 3];\nconst array2 = [4, 5, 6];\n```",
+          "options": [
+            "const combined = [...array1, ...array2];",
+            "const combined = [array1, array2];",
+            "const combined = ...array1 + ...array2;",
+            "const combined = array1 + array2;"
+          ],
+          "answer": "const combined = [...array1, ...array2];"
+        },
+        {
+          "question": "React can only render elements in the root document element.",
+          "options": ["True", "False"],
+          "answer": "False"
+        },
+        {
+          "question": "What is the correct syntax to import a Component from React?",
+          "options": [
+            "import { Component } from 'react'",
+            "import React.Component from 'react'",
+            "import Component from 'react'",
+            "import [ Component ] from 'react'"
+          ],
+          "answer": "import { Component } from 'react'"
+        },
+        {
+          "question": "Find the bug in this code:\n\n```function car({make, model}) {\n  return <h1>{make} {model}</h1>;\n};\n```",
+          "options": [
+            "The first letter of the function must be capitalized",
+            "Remove the return statement",
+            "Add parenthesis around the return value",
+            "Wrap the return in a fragment"
+          ],
+          "answer": "The first letter of the function must be capitalized"
+        },
+        {
+          "question": "React separates the user interface into components. How are components combined to create a user interface?",
+          "options": [
+            "By nesting components",
+            "By putting them in a folder structure",
+            "With webpack",
+            "With code splitting"
+          ],
+          "answer": "By nesting components"
+        },
+        {
+          "question": "Although React Hooks generally replace class components, there are no plans to remove classes from React.",
+          "options": ["False", "True"],
+          "answer": "True"
+        },
+        {
+          "question": "Which of the following is NOT a rule for React Hooks?",
+          "options": [
+            "Hooks cannot be conditional",
+            "Hooks can only be called inside React Function components",
+            "Hooks can be called in Class or Function components",
+            "Hooks can only be called at the top level of a component"
+          ],
+          "answer": "Hooks can be called in Class or Function components"
+        },
+        {
+          "question": "What is the output of the following code?\n\n```const make = 'Ford';\nconst model = 'Mustang';\nconst car = { make, model };\nconsole.log(car);\n```",
+          "options": [
+            "{make: 'Ford', model: 'Mustang'}",
+            "{{make: 'Ford', model: 'Mustang'}}",
+            "{car: 'Ford', car: 'Mustang'}}",
+            "{car: {make: 'Ford', model: 'Mustang'}}"
+          ],
+          "answer": "{make: 'Ford', model: 'Mustang'}"
+        },
+        {
+          "question": "Why should you avoid copying the values of props into a component's state?",
+          "options": [
+            "Because you want to allow data to flow back up to the parent",
+            "Because that would create two instances of the same state that could become out of sync",
+            "Because you should never mutate state",
+            "Because prop values cannot be stored in state"
+          ],
+          "answer": "Because that would create two instances of the same state that could become out of sync"
+        },
+        {
+          "question": "What is the purpose of the useEffect Hook in the following code?\n\nuseEffect(() => {\n  document.title = `Count: ${count}`;\n}, [count]);",
+          "options": [
+            "To update the document title when count changes",
+            "To fetch data from an API",
+            "To manipulate the DOM",
+            "To handle form submissions"
+          ],
+          "answer": "To update the document title when count changes"
         }
       ]
     }
